@@ -1,0 +1,25 @@
+# See https://help.github.com/ignore-files/ for more about ignoring files.
+
+.npmrc
+package-lock.json
+
+# dependencies
+node_modules/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.DS_Store
+.watchmanconfig
+.detox-bin
+# reasonml
+# *.bs.js
+.bsb.lock
+.merlin
+**/lib/bs
+**/lib/ocaml
+
+.vercel
+
+tsconfig.tsbuildinfo

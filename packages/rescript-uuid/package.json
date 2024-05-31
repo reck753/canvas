@@ -1,0 +1,9 @@
+{
+  "name": "@canvas/rescript-uuid",
+  "version": "0.0.1",
+  "dependencies": {
+    "uuid": "8.3.2",
+    "rescript": "11.0.1",
+    "@rescript/core": "0.6.0"
+  }
+}

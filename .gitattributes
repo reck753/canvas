@@ -1,0 +1,3 @@
+.yarn/releases/* linguist-vendored
+*.gen.tsx linguist-generated
+*.bs.js linguist-generated

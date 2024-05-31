@@ -1,0 +1,9 @@
+{
+  "name": "@canvas/tailwind-utils",
+  "version": "0.0.1",
+  "main": "src/index.ts",
+  "dependencies": {
+    "clsx": "2.0.0",
+    "tailwind-merge": "2.2.1"
+  }
+}

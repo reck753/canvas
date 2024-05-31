@@ -1,0 +1,37 @@
+{
+  "name": "@canvas/examples",
+  "namespace": false,
+  "jsx": {
+    "version": 4,
+    "mode": "automatic"
+  },
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "ignored-dirs": ["__generated__"],
+  "sources": [
+    {
+      "dir": "./src",
+      "subdirs": true
+    }
+  ],
+  "ppx-flags": [],
+  "bs-dev-dependencies": [],
+  "bs-dependencies": [
+    "@rescript/react",
+    "@rescript/core",
+    "@ryyppy/rescript-promise"
+  ],
+  "gentypeconfig": {
+    "language": "typescript",
+    "shims": {},
+    "importPath": "relative",
+    "debug": {
+      "all": false,
+      "basic": false
+    }
+  },
+  "bsc-flags": ["-open RescriptCore"]
+}

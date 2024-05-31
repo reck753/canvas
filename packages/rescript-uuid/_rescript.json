@@ -1,0 +1,31 @@
+{
+  "name": "@canvas/rescript-uuid",
+  "namespace": false,
+  "jsx": {
+    "version": 4,
+    "mode": "automatic"
+  },
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "ignored-dirs": ["__generated__"],
+  "sources": [
+    {
+      "dir": "./src",
+      "subdirs": true
+    }
+  ],
+  "bs-dev-dependencies": [],
+  "bs-dependencies": ["@rescript/core"],
+  "gentypeconfig": {
+    "language": "typescript",
+    "importPath": "relative",
+    "debug": {
+      "all": false,
+      "basic": false
+    }
+  },
+  "bsc-flags": ["-open RescriptCore"]
+}

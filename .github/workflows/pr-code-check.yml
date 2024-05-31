@@ -1,0 +1,43 @@
+name: "PR Code Check"
+
+env:
+
+on:
+  pull_request:
+    paths-ignore:
+      - "**.md" # Any markdown file
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**.md" # Any markdown file
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # NOTE Correctness check
+  code_check:
+    name: "Code Check"
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.11.0"
+
+      - name: Cache node modules
+        uses: actions/cache@v4
+        with:
+          path: "./**/node_modules"
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Verify code
+        run: |
+          yarn code-check-ci
+        env:
+          NODE_OPTIONS: --max_old_space_size=6144

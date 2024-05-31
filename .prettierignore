@@ -1,0 +1,9 @@
+*.gen.tsx
+*.bs.js
+**/__generated__/*
+.yarn
+.next
+cSpell.json
+.VSCodeCounter
+**/lib/bs
+**/lib/ocaml

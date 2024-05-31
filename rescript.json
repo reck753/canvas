@@ -1,0 +1,66 @@
+{
+  "name": "@canvas",
+  "jsx": {
+    "version": 4,
+    "mode": "automatic"
+  },
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "ignored-dirs": ["__generated__"],
+  "sources": [
+    {
+      "dir": "apps/examples/src",
+      "subdirs": true
+    },
+    {
+      "dir": "packages/rescript-global/src",
+      "subdirs": true
+    },
+    {
+      "dir": "packages/canvas/src",
+      "subdirs": true
+    },
+    {
+      "dir": "packages/canvas/__tests__",
+      "type": "dev"
+    },
+    {
+      "dir": "packages/utils/src",
+      "subdirs": true
+    },
+    {
+      "dir": "packages/rescript-uuid/src",
+      "subdirs": true
+    },
+    {
+      "dir": "packages/tailwind-utils/src",
+      "subdirs": true
+    },
+    {
+      "dir": "rescript-shims",
+      "subdirs": true
+    }
+  ],
+  "ppx-flags": [],
+  "bs-dev-dependencies": ["@glennsl/rescript-jest"],
+  "bs-dependencies": [
+    "@rescript/react",
+    "@rescript/core",
+    "@ryyppy/rescript-promise"
+  ],
+  "gentypeconfig": {
+    "language": "typescript",
+    "shims": {
+      "Js": "Js"
+    },
+    "importPath": "relative",
+    "debug": {
+      "all": false,
+      "basic": false
+    }
+  },
+  "bsc-flags": ["-open RescriptCore"]
+}

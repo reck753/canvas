@@ -1,0 +1,9 @@
+{
+  "name": "@canvas/rescript-global",
+  "version": "0.0.1",
+  "dependencies": {
+    "rescript": "11.0.1",
+    "@rescript/core": "0.6.0",
+    "@ryyppy/rescript-promise": "2.1.0"
+  }
+}

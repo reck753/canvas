@@ -1,0 +1,9 @@
+{
+  "name": "@canvas/utils",
+  "version": "0.0.1",
+  "main": "src/index.tsx",
+  "dependencies": {
+    "rescript": "11.0.1",
+    "@rescript/core": "0.6.0"
+  }
+}
