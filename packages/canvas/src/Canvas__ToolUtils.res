@@ -1,5 +1,5 @@
-open Canvas__Experimental__Models
-module CanvasStyle = Canvas__Experimental__Style
+open Canvas__Models
+module CanvasStyle = Canvas__Style
 
 let defaultStyle: Tool.style = {lineWidth: CanvasStyle.elementLineWidth}
 

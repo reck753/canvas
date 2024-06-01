@@ -50,7 +50,7 @@ module.exports = {
           "packages/rescript-global/src/document/RescriptGlobal__Document.bs.js",
           // canvas
           "packages/canvas/src/Canvas.bs.js",
-          "packages/canvas/src/_exp/Canvas__Experimental__Models.bs.js",
+          "packages/canvas/src/Canvas__Models.bs.js",
         ],
       },
       to: {},

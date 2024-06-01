@@ -5,25 +5,25 @@ import * as React from "react";
 import * as Caml_obj from "rescript/lib/es6/caml_obj.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Core__Option from "@rescript/core/src/Core__Option.bs.js";
-import * as TailwindUtils from "../../../tailwind-utils/src/TailwindUtils.bs.js";
+import * as Canvas__Style from "./Canvas__Style.bs.js";
+import * as TailwindUtils from "../../tailwind-utils/src/TailwindUtils.bs.js";
+import * as Canvas__ToolUtils from "./Canvas__ToolUtils.bs.js";
 import * as JsxRuntime from "react/jsx-runtime";
-import * as Canvas__Experimental__Style from "./Canvas__Experimental__Style.bs.js";
-import * as Canvas__Experimental__ToolUtils from "./Canvas__Experimental__ToolUtils.bs.js";
-import * as Canvas__Experimental__StateUtils from "./tools/Canvas__Experimental__StateUtils.bs.js";
-import * as Canvas__Experimental__Tools__Line from "./tools/Canvas__Experimental__Tools__Line.bs.js";
-import * as Canvas__Experimental__Tools__Rect from "./tools/Canvas__Experimental__Tools__Rect.bs.js";
-import * as Canvas__Experimental__ElementUtils from "./Canvas__Experimental__ElementUtils.bs.js";
-import * as Canvas__Experimental__Tools__Selection from "./tools/Canvas__Experimental__Tools__Selection.bs.js";
-import * as Canvas__Experimental__Events__OnMouseUp from "./events/Canvas__Experimental__Events__OnMouseUp.bs.js";
-import * as Canvas__Experimental__Events__OnMouseDown from "./events/Canvas__Experimental__Events__OnMouseDown.bs.js";
-import * as Canvas__Experimental__Events__OnMouseMove from "./events/Canvas__Experimental__Events__OnMouseMove.bs.js";
+import * as Canvas__StateUtils from "./Canvas__StateUtils.bs.js";
+import * as Canvas__Tools__Line from "./tools/Canvas__Tools__Line.bs.js";
+import * as Canvas__Tools__Rect from "./tools/Canvas__Tools__Rect.bs.js";
+import * as Canvas__ElementUtils from "./Canvas__ElementUtils.bs.js";
+import * as Canvas__Tools__Selection from "./tools/Canvas__Tools__Selection.bs.js";
+import * as Canvas__Events__OnMouseUp from "./events/Canvas__Events__OnMouseUp.bs.js";
+import * as Canvas__Events__OnMouseDown from "./events/Canvas__Events__OnMouseDown.bs.js";
+import * as Canvas__Events__OnMouseMove from "./events/Canvas__Events__OnMouseMove.bs.js";
 
-var newrecord = Caml_obj.obj_dup(Canvas__Experimental__Tools__Line.tool);
+var newrecord = Caml_obj.obj_dup(Canvas__Tools__Line.tool);
 
 var tools = [
-  Canvas__Experimental__Tools__Selection.tool,
-  Canvas__Experimental__Tools__Rect.tool,
-  Canvas__Experimental__Tools__Line.tool,
+  Canvas__Tools__Selection.tool,
+  Canvas__Tools__Rect.tool,
+  Canvas__Tools__Line.tool,
   (newrecord.engine = {
       TAG: "Line",
       _0: {
@@ -46,7 +46,7 @@ var tools = [
         var snapToGrid = match.snapToGrid;
         var clientY = param.clientY;
         var clientX = param.clientX;
-        var state = Canvas__Experimental__StateUtils.getRectState(match.state);
+        var state = Canvas__StateUtils.getRectState(match.state);
         var match$1;
         if (typeof snapToGrid !== "object") {
           match$1 = [
@@ -56,8 +56,8 @@ var tools = [
         } else {
           var gridSize = snapToGrid._0;
           match$1 = [
-            Canvas__Experimental__ElementUtils.roundNumberBySnapGridSize(clientX, gridSize),
-            Canvas__Experimental__ElementUtils.roundNumberBySnapGridSize(clientY, gridSize)
+            Canvas__ElementUtils.roundNumberBySnapGridSize(clientX, gridSize),
+            Canvas__ElementUtils.roundNumberBySnapGridSize(clientY, gridSize)
           ];
         }
         if (state === undefined) {
@@ -101,12 +101,12 @@ var tools = [
       }),
     onDoubleClick: (function (param) {
         var clickedElement = param.clickedElement;
-        console.log("onDoubleClick", Canvas__Experimental__ElementUtils.getToolId(clickedElement), Canvas__Experimental__ElementUtils.getElementId(clickedElement));
+        console.log("onDoubleClick", Canvas__ElementUtils.getToolId(clickedElement), Canvas__ElementUtils.getElementId(clickedElement));
       })
   }
 ];
 
-function Canvas__Experimental(props) {
+function Canvas__Example(props) {
   var match = React.useState(function () {
         return {
                 state: {
@@ -133,18 +133,18 @@ function Canvas__Experimental(props) {
           if (ctx !== undefined) {
             var canvas$2 = Core__Option.getExn(canvas$1);
             ctx.clearRect(0, 0, canvas$2.width, canvas$2.height);
-            ctx.strokeStyle = Canvas__Experimental__Style.elementStroke;
+            ctx.strokeStyle = Canvas__Style.elementStroke;
             store.elements.forEach(function (element) {
                   var elementTool = tools.find(function (tool) {
-                        return tool.toolId === Canvas__Experimental__ElementUtils.getToolId(element);
+                        return tool.toolId === Canvas__ElementUtils.getToolId(element);
                       });
-                  var isSelected = Canvas__Experimental__ElementUtils.isSelected(Canvas__Experimental__ElementUtils.getElementId(element), store.selectedElementIds);
-                  var style = Canvas__Experimental__ToolUtils.getOptStyleWithDefaults(elementTool);
-                  ctx.lineWidth = Canvas__Experimental__ToolUtils.getLineWidth(style);
+                  var isSelected = Canvas__ElementUtils.isSelected(Canvas__ElementUtils.getElementId(element), store.selectedElementIds);
+                  var style = Canvas__ToolUtils.getOptStyleWithDefaults(elementTool);
+                  ctx.lineWidth = Canvas__ToolUtils.getLineWidth(style);
                   if (isSelected) {
-                    ctx.strokeStyle = Canvas__Experimental__Style.selectedElementStroke;
+                    ctx.strokeStyle = Canvas__Style.selectedElementStroke;
                   } else {
-                    ctx.strokeStyle = Canvas__Experimental__Style.elementStroke;
+                    ctx.strokeStyle = Canvas__Style.elementStroke;
                   }
                   if (element.TAG === "Line") {
                     var line = element._0;
@@ -154,14 +154,14 @@ function Canvas__Experimental(props) {
                     ctx.moveTo(start.x, start.y);
                     ctx.lineTo(end.x, end.y);
                     ctx.stroke();
-                    ctx.font = Canvas__Experimental__Style.font;
+                    ctx.font = Canvas__Style.font;
                     if (isSelected) {
-                      ctx.fillStyle = Canvas__Experimental__Style.selectedElementStroke;
+                      ctx.fillStyle = Canvas__Style.selectedElementStroke;
                     } else {
                       ctx.fillStyle = "black";
                     }
                     var text = Core__Option.getOr(line.label, line.zIndex.toString());
-                    var lineCenter = Canvas__Experimental__ElementUtils.getLineCenterForText(line, text, Canvas__Experimental__Style.font);
+                    var lineCenter = Canvas__ElementUtils.getLineCenterForText(line, text, Canvas__Style.font);
                     return ctx.fillText(text, lineCenter.x, lineCenter.y);
                   }
                   var rect = element._0;
@@ -170,20 +170,20 @@ function Canvas__Experimental(props) {
                   var y = rect.y;
                   var x = rect.x;
                   if (isSelected) {
-                    ctx.fillStyle = Canvas__Experimental__Style.selectedRectFill;
+                    ctx.fillStyle = Canvas__Style.selectedRectFill;
                   } else {
-                    ctx.fillStyle = Canvas__Experimental__Style.rectFill;
+                    ctx.fillStyle = Canvas__Style.rectFill;
                   }
                   ctx.strokeRect(x, y, width, height);
                   ctx.fillRect(x, y, width, height);
-                  ctx.font = Canvas__Experimental__Style.font;
+                  ctx.font = Canvas__Style.font;
                   if (isSelected) {
-                    ctx.fillStyle = Canvas__Experimental__Style.selectedElementStroke;
+                    ctx.fillStyle = Canvas__Style.selectedElementStroke;
                   } else {
                     ctx.fillStyle = "black";
                   }
                   var text$1 = Core__Option.getOr(rect.label, rect.zIndex.toString());
-                  var rectCenter = Canvas__Experimental__ElementUtils.getRectCenterForText(rect, text$1, Canvas__Experimental__Style.font);
+                  var rectCenter = Canvas__ElementUtils.getRectCenterForText(rect, text$1, Canvas__Style.font);
                   ctx.fillText(text$1, rectCenter.x, rectCenter.y);
                 });
             var match = store.state;
@@ -196,9 +196,9 @@ function Canvas__Experimental(props) {
                     var width = match$2.width;
                     var y = match$2.y;
                     var x = match$2.x;
-                    ctx.strokeStyle = Canvas__Experimental__Style.selectionBoxStroke;
-                    ctx.fillStyle = Canvas__Experimental__Style.selectionBoxFill;
-                    ctx.lineWidth = Canvas__Experimental__Style.selectionBoxLineWidth;
+                    ctx.strokeStyle = Canvas__Style.selectionBoxStroke;
+                    ctx.fillStyle = Canvas__Style.selectionBoxFill;
+                    ctx.lineWidth = Canvas__Style.selectionBoxLineWidth;
                     ctx.strokeRect(x, y, width, height);
                     ctx.fillRect(x, y, width, height);
                   }
@@ -212,13 +212,13 @@ function Canvas__Experimental(props) {
           
         }), [store]);
   var handleMouseDown = function (e) {
-    Canvas__Experimental__Events__OnMouseDown.handler(e, 100, 100, store, tools, setStore);
+    Canvas__Events__OnMouseDown.handler(e, 100, 100, store, tools, setStore);
   };
   var handleMouseMove = function (e) {
-    Canvas__Experimental__Events__OnMouseMove.handler(e, 100, 100, store, tools, setStore);
+    Canvas__Events__OnMouseMove.handler(e, 100, 100, store, tools, setStore);
   };
   var handleMouseUp = function (e) {
-    Canvas__Experimental__Events__OnMouseUp.handler(e, 100, 100, store, tools, setStore);
+    Canvas__Events__OnMouseUp.handler(e, 100, 100, store, tools, setStore);
   };
   var match$1 = store.state;
   var tmp;
@@ -256,7 +256,7 @@ function Canvas__Experimental(props) {
     tmp$2 = null;
   } else {
     var selectedElement = store.elements.find(function (element) {
-          return Canvas__Experimental__ElementUtils.getElementId(element) === store.selectedElementIds[0];
+          return Canvas__ElementUtils.getElementId(element) === store.selectedElementIds[0];
         });
     if (selectedElement !== undefined) {
       var match$3 = selectedElement._0;
@@ -281,7 +281,7 @@ function Canvas__Experimental(props) {
                                       snapToGrid: prev.snapToGrid,
                                       selectedToolId: prev.selectedToolId,
                                       selectedElementIds: prev.selectedElementIds,
-                                      elements: Canvas__Experimental__ElementUtils.updateElementLabel(prev.elements, id, label)
+                                      elements: Canvas__ElementUtils.updateElementLabel(prev.elements, id, label)
                                     };
                             });
                       })
@@ -355,8 +355,8 @@ function Canvas__Experimental(props) {
                                                 selectedToolId: prev.selectedToolId,
                                                 selectedElementIds: [],
                                                 elements: prev.elements.filter(function (element) {
-                                                      var id = Canvas__Experimental__ElementUtils.getElementId(element);
-                                                      return !Canvas__Experimental__ElementUtils.isSelected(id, prev.selectedElementIds);
+                                                      var id = Canvas__ElementUtils.getElementId(element);
+                                                      return !Canvas__ElementUtils.isSelected(id, prev.selectedElementIds);
                                                     })
                                               };
                                       });
@@ -373,7 +373,7 @@ function Canvas__Experimental(props) {
             });
 }
 
-var make = Canvas__Experimental;
+var make = Canvas__Example;
 
 export {
   make ,

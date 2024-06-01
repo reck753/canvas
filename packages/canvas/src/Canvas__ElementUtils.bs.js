@@ -2,9 +2,9 @@
 
 import * as Utils from "./utils";
 import * as Core__Option from "@rescript/core/src/Core__Option.bs.js";
-import * as Utils__Array from "../../../utils/src/array/Utils__Array.bs.js";
-import * as Canvas__Experimental__Constants from "./Canvas__Experimental__Constants.bs.js";
-import * as Canvas__Experimental__SelectionUtils from "./Canvas__Experimental__SelectionUtils.bs.js";
+import * as Utils__Array from "../../utils/src/array/Utils__Array.bs.js";
+import * as Canvas__Constants from "./Canvas__Constants.bs.js";
+import * as Canvas__SelectionUtils from "./Canvas__SelectionUtils.bs.js";
 
 function getElementId(element) {
   return element._0.id;
@@ -32,9 +32,9 @@ function isSelected(elementId, selectedElementIds) {
 
 function intersectsSelection(element, selection) {
   if (element.TAG === "Line") {
-    return Canvas__Experimental__SelectionUtils.lineIntersectsSelection(element._0, selection, Canvas__Experimental__Constants.tolerance);
+    return Canvas__SelectionUtils.lineIntersectsSelection(element._0, selection, Canvas__Constants.tolerance);
   } else {
-    return Canvas__Experimental__SelectionUtils.rectIntersectsSelection(element._0, selection);
+    return Canvas__SelectionUtils.rectIntersectsSelection(element._0, selection);
   }
 }
 
@@ -44,21 +44,21 @@ function getElementAtPoint(elements, clientX, clientY, givenTolerance) {
         }));
   return sortedElements.find(function (element) {
               if (element.TAG === "Line") {
-                return Canvas__Experimental__SelectionUtils.isPointNearLine(clientX, clientY, element._0, Canvas__Experimental__Constants.tolerance);
+                return Canvas__SelectionUtils.isPointNearLine(clientX, clientY, element._0, Canvas__Constants.tolerance);
               }
               var match = element._0;
-              var normalizedSelection = Canvas__Experimental__SelectionUtils.normalizeSelection({
+              var normalizedSelection = Canvas__SelectionUtils.normalizeSelection({
                     x: match.x,
                     y: match.y,
                     width: match.width,
                     height: match.height
                   });
-              return Canvas__Experimental__SelectionUtils.isPointInsideSelection(normalizedSelection, clientX, clientY, givenTolerance);
+              return Canvas__SelectionUtils.isPointInsideSelection(normalizedSelection, clientX, clientY, givenTolerance);
             });
 }
 
 function getElementAtPointWithTolerance(elements, clientX, clientY) {
-  return getElementAtPoint(elements, clientX, clientY, Canvas__Experimental__Constants.tolerance);
+  return getElementAtPoint(elements, clientX, clientY, Canvas__Constants.tolerance);
 }
 
 function moveSelectedElements(elements, move, selectedElementIds, clientX, clientY) {

@@ -1,5 +1,5 @@
-open Canvas__Experimental__Models
-module CanvasUtils = Canvas__Experimental__CanvasUtils
+open Canvas__Models
+module CanvasUtils = Canvas__CanvasUtils
 
 let handler = (
   e: JsxEvent.Mouse.t,
@@ -15,7 +15,7 @@ let handler = (
   let selectedTool = tools->Array.find(tool => tool.toolId === store.selectedToolId)
 
   selectedTool->Option.forEach(selectedTool => {
-    selectedTool.onEnd({
+    selectedTool.onMove({
       clientX,
       clientY,
       store,

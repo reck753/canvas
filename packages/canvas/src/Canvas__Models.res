@@ -69,7 +69,7 @@ module Tool = {
     clientY: float,
     store: Store.t,
     updateStore: (Store.t => Store.t) => unit,
-    target: Canvas__Experimental__CanvasUtils.JsxEventFixed.Mouse.target,
+    target: Canvas__CanvasUtils.JsxEventFixed.Mouse.target,
     tools: array<'tool>,
   }
   type onStartArguments<'tool> = {
@@ -87,7 +87,7 @@ module Tool = {
     clickedElement: element,
     store: Store.t,
     updateStore: (Store.t => Store.t) => unit,
-    target: Canvas__Experimental__CanvasUtils.JsxEventFixed.Mouse.target,
+    target: Canvas__CanvasUtils.JsxEventFixed.Mouse.target,
   }
   type style = {lineWidth?: float}
   type rectSettings = {...style, canResizeVertically?: bool, canResizeHorizontally?: bool}

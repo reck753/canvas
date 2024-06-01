@@ -1,8 +1,8 @@
 open Jest
 open Expect
 
-module Models = Canvas__Experimental__Models
-module SelectionUtils = Canvas__Experimental__SelectionUtils
+module Models = Canvas__Models
+module SelectionUtils = Canvas__SelectionUtils
 
 describe("SelectionUtils", () => {
   describe("sqr", () => {

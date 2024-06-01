@@ -1,8 +1,8 @@
 open Jest
 open Expect
 
-module Models = Canvas__Experimental__Models
-module ElementUtils = Canvas__Experimental__ElementUtils
+module Models = Canvas__Models
+module ElementUtils = Canvas__ElementUtils
 
 describe("ElementUtils", () => {
   describe("getElementId", () => {

@@ -1,5 +1,5 @@
-open Canvas__Experimental__Models
-open Canvas__Experimental__Constants
+open Canvas__Models
+open Canvas__Constants
 
 let normalizeRect = (rect: Rect.t): Rect.t => {
   let x = rect.width >= 0. ? rect.x : rect.x +. rect.width

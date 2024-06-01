@@ -1,7 +1,7 @@
-open Canvas__Experimental__Models
-module ElementUtils = Canvas__Experimental__ElementUtils
-module SelectionUtils = Canvas__Experimental__SelectionUtils
-module StateUtils = Canvas__Experimental__StateUtils
+open Canvas__Models
+module ElementUtils = Canvas__ElementUtils
+module SelectionUtils = Canvas__SelectionUtils
+module StateUtils = Canvas__StateUtils
 
 let tool: Tool.t = {
   toolId: "selection",

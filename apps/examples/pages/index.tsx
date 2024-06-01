@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { makePageTitle } from "../src/utils/seoUtils";
-import { make as Canvas } from "@canvas/canvas/src/_exp/Canvas__Experimental.gen";
+import { make as Canvas } from "@canvas/canvas/src/Canvas__Example.gen";
 
 const Index = () => {
   return (

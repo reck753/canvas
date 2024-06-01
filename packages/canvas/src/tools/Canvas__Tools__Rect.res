@@ -1,13 +1,13 @@
-open Canvas__Experimental__Models
-module ElementUtils = Canvas__Experimental__ElementUtils
-module SelectionUtils = Canvas__Experimental__SelectionUtils
-module StateUtils = Canvas__Experimental__StateUtils
+open Canvas__Models
+module ElementUtils = Canvas__ElementUtils
+module SelectionUtils = Canvas__SelectionUtils
+module StateUtils = Canvas__StateUtils
 
 let tool: Tool.t = {
-  toolId: "line",
-  engine: Line({
-    canResizeStart: true,
-    canResizeEnd: true,
+  toolId: "rect",
+  engine: Rect({
+    canResizeVertically: true,
+    canResizeHorizontally: true,
   }),
   onStart: ({
     clientX,
@@ -16,7 +16,7 @@ let tool: Tool.t = {
     nextIndex,
     updateStore,
   }) => {
-    let state = StateUtils.getLineState(state)
+    let state = StateUtils.getRectState(state)
 
     let (x, y) = switch snapToGrid {
     | No => (clientX, clientY)
@@ -30,23 +30,25 @@ let tool: Tool.t = {
     | None => ()
     | Some(Drawing) => ()
     | Some(Idle) =>
-      let element: element = Line({
+      let element: element = Rect({
         id: RescriptUuid.make(),
-        toolId: selectedToolId,
         zIndex: nextIndex,
-        start: {x, y},
-        end: {x, y},
+        toolId: selectedToolId,
+        x,
+        y,
+        width: 0.,
+        height: 0.,
         label: None,
       })
       updateStore(prev => {
         ...prev,
-        state: Line(Drawing),
+        state: Rect(Drawing),
         elements: prev.elements->Array.concat([element]),
       })
     }
   },
   onMove: ({clientX, clientY, store: {state, elements}, target, updateStore}) => {
-    let state = StateUtils.getLineState(state)
+    let state = StateUtils.getRectState(state)
     let position = elements->Array.length - 1
     let element = elements->Array.get(position)
 
@@ -55,10 +57,11 @@ let tool: Tool.t = {
     | Some(Idle) => target.style.cursor = "crosshair"
     | Some(Drawing) =>
       switch element {
-      | Some(Line(line)) =>
-        let element: element = Line({
-          ...line,
-          end: {x: clientX, y: clientY},
+      | Some(Rect(rect)) =>
+        let element: element = Rect({
+          ...rect,
+          width: clientX -. rect.x,
+          height: clientY -. rect.y,
         })
         updateStore(prev => {
           ...prev,
@@ -74,12 +77,14 @@ let tool: Tool.t = {
     }
   },
   onEnd: ({store: {state, snapToGrid, elements}, updateStore}) => {
-    let state = StateUtils.getLineState(state)
+    let state = StateUtils.getRectState(state)
     switch state {
     | Some(Idle)
     | Some(Drawing) =>
+      // This snapping logic is redundant because the element should have already
+      // been snapped to the grid in the onStart handler. Keeping just in case.
       switch snapToGrid {
-      | No => updateStore(prev => {...prev, state: Line(Idle), selectedElementIds: []})
+      | No => updateStore(prev => {...prev, state: Rect(Idle), selectedElementIds: []})
       | Yes(gridSize) =>
         let position = elements->Array.length - 1
         let element = elements->Array.get(position)
@@ -93,7 +98,7 @@ let tool: Tool.t = {
               ~position,
               ~element,
             ),
-            state: Line(Idle),
+            state: Rect(Idle),
             selectedElementIds: [],
           })
         | None => updateStore(prev => {...prev, state: Rect(Idle), selectedElementIds: []})

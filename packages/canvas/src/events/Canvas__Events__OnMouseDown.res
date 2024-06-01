@@ -1,6 +1,6 @@
-open Canvas__Experimental__Models
-module CanvasUtils = Canvas__Experimental__CanvasUtils
-module ElementUtils = Canvas__Experimental__ElementUtils
+open Canvas__Models
+module CanvasUtils = Canvas__CanvasUtils
+module ElementUtils = Canvas__ElementUtils
 
 let handler = (
   e: JsxEvent.Mouse.t,

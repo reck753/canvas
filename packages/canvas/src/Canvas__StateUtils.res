@@ -1,4 +1,4 @@
-open Canvas__Experimental__Models
+open Canvas__Models
 
 let getSelectionState: State.t => option<Selection.state> = state =>
   switch state {

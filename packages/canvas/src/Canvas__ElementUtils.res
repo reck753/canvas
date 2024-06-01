@@ -1,6 +1,6 @@
-open Canvas__Experimental__Models
-open Canvas__Experimental__Constants
-module SelectionUtils = Canvas__Experimental__SelectionUtils
+open Canvas__Models
+open Canvas__Constants
+module SelectionUtils = Canvas__SelectionUtils
 
 // Getters for shared properties
 let getElementId = (element: element) =>

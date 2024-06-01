@@ -2,20 +2,20 @@
 
 import * as Core__Array from "@rescript/core/src/Core__Array.bs.js";
 import * as Core__Option from "@rescript/core/src/Core__Option.bs.js";
-import * as Canvas__Experimental__CanvasUtils from "../Canvas__Experimental__CanvasUtils.bs.js";
-import * as Canvas__Experimental__ElementUtils from "../Canvas__Experimental__ElementUtils.bs.js";
+import * as Canvas__CanvasUtils from "../Canvas__CanvasUtils.bs.js";
+import * as Canvas__ElementUtils from "../Canvas__ElementUtils.bs.js";
 
 function handler(e, offsetX, offsetY, store, tools, updateStore) {
   e.preventDefault();
   var target = e.target;
-  var clientX = Canvas__Experimental__CanvasUtils.normalizeClientX(Canvas__Experimental__CanvasUtils.getClientX(e), offsetX);
-  var clientY = Canvas__Experimental__CanvasUtils.normalizeClientY(Canvas__Experimental__CanvasUtils.getClientY(e), offsetY);
+  var clientX = Canvas__CanvasUtils.normalizeClientX(Canvas__CanvasUtils.getClientX(e), offsetX);
+  var clientY = Canvas__CanvasUtils.normalizeClientY(Canvas__CanvasUtils.getClientY(e), offsetY);
   var highestZIndex = Core__Array.reduce(store.elements, 0, (function (acc, element) {
           return Math.max(acc, element._0.zIndex);
         }));
   var nextZIndex = highestZIndex + 1;
   if (e.detail === 2) {
-    return Canvas__Experimental__ElementUtils.invokeOnDoubleClick(clientX, clientY, tools, target, updateStore, store);
+    return Canvas__ElementUtils.invokeOnDoubleClick(clientX, clientY, tools, target, updateStore, store);
   }
   var selectedTool = tools.find(function (tool) {
         return tool.toolId === store.selectedToolId;
@@ -42,4 +42,4 @@ export {
   ElementUtils ,
   handler ,
 }
-/* Canvas__Experimental__ElementUtils Not a pure module */
+/* Canvas__ElementUtils Not a pure module */
