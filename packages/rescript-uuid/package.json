@@ -1,6 +1,6 @@
 {
   "name": "@reck753/canvas-rescript-uuid",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "peerDependencies": {
     "rescript": "11.0.1",
     "uuid": "8.3.2"
