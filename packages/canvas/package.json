@@ -17,8 +17,7 @@
   },
   "scripts": {
     "prepublishOnly": "rescript clean && rescript build",
-    "publish-package": "npm publish --access public",
-    "publish-me": "yarn prepublishOnly && yarn publish-package && git reset --hard HEAD"
+    "publish-package": "npm publish --access public"
   },
   "repository": {
     "type": "git",
