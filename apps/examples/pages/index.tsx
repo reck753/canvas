@@ -1,16 +1,15 @@
 import Head from "next/head";
-import { makePageTitle } from "../src/utils/seoUtils";
-import { make as Canvas } from "@canvas/canvas/src/Canvas__Example.gen";
+import { make as RescriptExample } from "../src/rescript-example/Examples__RescriptExample.gen";
 
 const Index = () => {
   return (
     <>
       <Head>
-        <title> {makePageTitle("Home")} </title>
+        <title> Home | reck753/canvas </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex p-[100px] gap-10">
-        <Canvas />
+        <RescriptExample />
         <div className="flex flex-col gap-1">
           <span className="font-bold">TODO</span>
           <li className="line-through">Resize One</li>

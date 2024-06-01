@@ -31,12 +31,7 @@ function getLineWidth(style) {
   return Core__Option.getOr(style.lineWidth, Canvas__Style.elementLineWidth);
 }
 
-var CanvasStyle;
-
 export {
-  CanvasStyle ,
-  defaultStyle ,
-  getStyle ,
   getOptStyleWithDefaults ,
   getLineWidth ,
 }

@@ -1,17 +1,19 @@
-open Canvas__Models
-module Document = RescriptGlobal__Document
-module ElementUtils = Canvas__ElementUtils
-module StateUtils = Canvas__StateUtils
-module ToolUtils = Canvas__ToolUtils
-module CanvasStyle = Canvas__Style
+open Canvas.Models
+module Document = RescriptGlobal.Document
+module ElementUtils = Canvas.ElementUtils
+module StateUtils = Canvas.StateUtils
+module ToolUtils = Canvas.ToolUtils
+module CanvasStyle = Canvas.Style
+module Tools = Canvas.Tools
+module Events = Canvas.Events
 
 // Accept through props instead
 let tools: array<Tool.t> = [
-  Canvas__Tools__Selection.tool,
-  Canvas__Tools__Rect.tool,
-  Canvas__Tools__Line.tool,
+  Tools.Selection.tool,
+  Tools.Rect.tool,
+  Tools.Line.tool,
   {
-    ...Canvas__Tools__Line.tool,
+    ...Tools.Line.tool,
     toolId: "line1",
     engine: Line({
       canResizeStart: false,
@@ -176,27 +178,15 @@ let make = () => {
   }, [store])
 
   let handleMouseDown = (e: JsxEvent.Mouse.t) => {
-    e->Canvas__Events__OnMouseDown.handler(
-      ~offsetX,
-      ~offsetY,
-      ~store,
-      ~tools,
-      ~updateStore=setStore,
-    )
+    e->Events.OnMouseDown.handler(~offsetX, ~offsetY, ~store, ~tools, ~updateStore=setStore)
   }
 
   let handleMouseMove = (e: JsxEvent.Mouse.t) => {
-    e->Canvas__Events__OnMouseMove.handler(
-      ~offsetX,
-      ~offsetY,
-      ~store,
-      ~tools,
-      ~updateStore=setStore,
-    )
+    e->Events.OnMouseMove.handler(~offsetX, ~offsetY, ~store, ~tools, ~updateStore=setStore)
   }
 
   let handleMouseUp = (e: JsxEvent.Mouse.t) => {
-    e->Canvas__Events__OnMouseUp.handler(~offsetX, ~offsetY, ~store, ~tools, ~updateStore=setStore)
+    e->Events.OnMouseUp.handler(~offsetX, ~offsetY, ~store, ~tools, ~updateStore=setStore)
   }
 
   <div>

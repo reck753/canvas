@@ -285,10 +285,7 @@ function snapElementToGrid(element, gridSize) {
         };
 }
 
-var SelectionUtils;
-
 export {
-  SelectionUtils ,
   getElementId ,
   getElementZIndex ,
   getToolId ,

@@ -3,7 +3,10 @@
 
 var $$Buffer;
 
+var $$Document;
+
 export {
   $$Buffer ,
+  $$Document ,
 }
 /* No side effect */

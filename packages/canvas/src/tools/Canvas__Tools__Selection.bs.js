@@ -492,16 +492,7 @@ var tool = {
   onEnd: tool_onEnd
 };
 
-var ElementUtils;
-
-var SelectionUtils;
-
-var StateUtils;
-
 export {
-  ElementUtils ,
-  SelectionUtils ,
-  StateUtils ,
   tool ,
 }
 /* Canvas__ElementUtils Not a pure module */

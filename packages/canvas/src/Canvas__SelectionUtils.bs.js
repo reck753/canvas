@@ -529,15 +529,12 @@ function resizeLine(line, clientX, clientY, corner) {
   }
 }
 
-var epsilon = 1e-10;
-
 export {
   normalizeRect ,
   normalizeSelection ,
   expandSelectionBox ,
   isPointInsideSelection ,
   onSegment ,
-  epsilon ,
   orientation ,
   doIntersect ,
   sqr ,

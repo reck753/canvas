@@ -33,13 +33,7 @@ function handler(e, offsetX, offsetY, store, tools, updateStore) {
         }));
 }
 
-var CanvasUtils;
-
-var ElementUtils;
-
 export {
-  CanvasUtils ,
-  ElementUtils ,
   handler ,
 }
 /* Canvas__ElementUtils Not a pure module */

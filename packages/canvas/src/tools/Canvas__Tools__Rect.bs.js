@@ -170,16 +170,7 @@ var tool = {
   onEnd: tool_onEnd
 };
 
-var ElementUtils;
-
-var SelectionUtils;
-
-var StateUtils;
-
 export {
-  ElementUtils ,
-  SelectionUtils ,
-  StateUtils ,
   tool ,
 }
 /* uuid Not a pure module */

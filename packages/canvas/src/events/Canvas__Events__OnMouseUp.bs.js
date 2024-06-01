@@ -22,10 +22,7 @@ function handler(e, offsetX, offsetY, store, tools, updateStore) {
         }));
 }
 
-var CanvasUtils;
-
 export {
-  CanvasUtils ,
   handler ,
 }
 /* No side effect */

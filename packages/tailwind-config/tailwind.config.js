@@ -6,7 +6,6 @@ module.exports = {
     "./pages/**/*.{js,jsx.ts,tsx,md,mdx}",
     "./components/**/*.{js,jsx.ts,tsx,md,mdx}",
     "./src/**/*.{js,jsx.ts,tsx,md,mdx}",
-    "../../packages/canvas/src/**/*.{js,jsx.ts,tsx}",
   ],
   plugins: [require("tailwindcss-animate")],
   theme: {

@@ -1,0 +1,9 @@
+let selectionBoxStroke: string
+let selectionBoxFill: string
+let selectionBoxLineWidth: float
+let elementStroke: string
+let elementLineWidth: float
+let selectedElementStroke: string
+let rectFill: string
+let selectedRectFill: string
+let font: string

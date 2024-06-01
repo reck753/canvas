@@ -5,18 +5,18 @@ import * as React from "react";
 import * as Caml_obj from "rescript/lib/es6/caml_obj.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Core__Option from "@rescript/core/src/Core__Option.bs.js";
-import * as Canvas__Style from "./Canvas__Style.bs.js";
-import * as TailwindUtils from "../../tailwind-utils/src/TailwindUtils.bs.js";
-import * as Canvas__ToolUtils from "./Canvas__ToolUtils.bs.js";
+import * as Canvas__Style from "../../../../packages/canvas/src/Canvas__Style.bs.js";
+import * as TailwindUtils from "../../../../packages/tailwind-utils/src/TailwindUtils.bs.js";
+import * as Canvas__ToolUtils from "../../../../packages/canvas/src/Canvas__ToolUtils.bs.js";
 import * as JsxRuntime from "react/jsx-runtime";
-import * as Canvas__StateUtils from "./Canvas__StateUtils.bs.js";
-import * as Canvas__Tools__Line from "./tools/Canvas__Tools__Line.bs.js";
-import * as Canvas__Tools__Rect from "./tools/Canvas__Tools__Rect.bs.js";
-import * as Canvas__ElementUtils from "./Canvas__ElementUtils.bs.js";
-import * as Canvas__Tools__Selection from "./tools/Canvas__Tools__Selection.bs.js";
-import * as Canvas__Events__OnMouseUp from "./events/Canvas__Events__OnMouseUp.bs.js";
-import * as Canvas__Events__OnMouseDown from "./events/Canvas__Events__OnMouseDown.bs.js";
-import * as Canvas__Events__OnMouseMove from "./events/Canvas__Events__OnMouseMove.bs.js";
+import * as Canvas__StateUtils from "../../../../packages/canvas/src/Canvas__StateUtils.bs.js";
+import * as Canvas__Tools__Line from "../../../../packages/canvas/src/tools/Canvas__Tools__Line.bs.js";
+import * as Canvas__Tools__Rect from "../../../../packages/canvas/src/tools/Canvas__Tools__Rect.bs.js";
+import * as Canvas__ElementUtils from "../../../../packages/canvas/src/Canvas__ElementUtils.bs.js";
+import * as Canvas__Tools__Selection from "../../../../packages/canvas/src/tools/Canvas__Tools__Selection.bs.js";
+import * as Canvas__Events__OnMouseUp from "../../../../packages/canvas/src/events/Canvas__Events__OnMouseUp.bs.js";
+import * as Canvas__Events__OnMouseDown from "../../../../packages/canvas/src/events/Canvas__Events__OnMouseDown.bs.js";
+import * as Canvas__Events__OnMouseMove from "../../../../packages/canvas/src/events/Canvas__Events__OnMouseMove.bs.js";
 
 var newrecord = Caml_obj.obj_dup(Canvas__Tools__Line.tool);
 
@@ -106,7 +106,7 @@ var tools = [
   }
 ];
 
-function Canvas__Example(props) {
+function Examples__RescriptExample(props) {
   var match = React.useState(function () {
         return {
                 state: {
@@ -373,7 +373,7 @@ function Canvas__Example(props) {
             });
 }
 
-var make = Canvas__Example;
+var make = Examples__RescriptExample;
 
 export {
   make ,
