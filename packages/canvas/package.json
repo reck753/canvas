@@ -1,14 +1,13 @@
 {
   "name": "@reck753/canvas",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "main": "src/index.ts",
-  "types": "declarations.d.ts",
   "peerDependencies": {
     "rescript": "11.0.1"
   },
   "dependencies": {
-    "@reck753/canvas-rescript-uuid": "^0.0.10",
-    "@reck753/canvas-utils": "^0.0.10",
+    "@reck753/canvas-rescript-uuid": "^0.0.11",
+    "@reck753/canvas-utils": "^0.0.11",
     "@rescript/core": "0.6.0",
     "uuid": "8.3.2"
   },

@@ -27,6 +27,7 @@
     },
     "generatedFileExtension": ".gen.ts",
     "importPath": "relative",
+    "module": "commonjs",
     "debug": {
       "all": false,
       "basic": false
