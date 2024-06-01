@@ -29,6 +29,7 @@
       "Js": "Js",
       "PervasivesU": "PervasivesU"
     },
+    "generatedFileExtension": ".gen.ts",
     "importPath": "relative",
     "debug": {
       "all": false,
