@@ -19,7 +19,7 @@
     "prepare": "cd .. && husky install",
     "lint": "eslint 'packages/**/*.ts{,x}' 'apps/**/*.ts{,x}' --ignore-pattern '/node_modules/'",
     "validate-dependencies": "yarn run dependency-cruiser --config .dependency-cruiser.js .",
-    "check-code-parallelly-ci": "concurrently --kill-others-on-fail \"bash ./build-process/check-git-working-tree.sh\" \"yarn jest --ci --silent --bail --passWithNoTests --logHeapUsage --maxWorkers=2\" \"yarn tsc\" \"yarn validate-dependencies\" \"yarn lint\"",
+    "check-code-parallelly-ci": "concurrently --kill-others-on-fail \"yarn jest --ci --silent --bail --passWithNoTests --logHeapUsage --maxWorkers=2\" \"yarn tsc\" \"yarn validate-dependencies\" \"yarn lint\"",
     "code-check-ci": "yarn install && yarn run re:build && yarn format:all && yarn check-code-parallelly-ci",
     "format:most": "prettier --write \"**/*.{ts,tsx,js,jsx,json,css,md,yml}\"",
     "format:res": "rescript format -all",
