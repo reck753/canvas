@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "main": "src/index.ts",
   "dependencies": {
-    "@canvas/tailwind-config": "*",
+    "@canvas/rescript-uuid": "0.0.1",
+    "@canvas/utils": "0.0.1",
     "@ryyppy/rescript-promise": "2.1.0",
     "rescript": "11.0.1",
     "@rescript/core": "0.6.0",
