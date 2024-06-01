@@ -7,8 +7,7 @@
     "rescript": "11.0.1"
   },
   "scripts": {
-    "prepublishOnly": "rescript clean && rescript build",
-    "publish-package": "npm publish --access public"
+    "prepublishOnly": "rescript clean && rescript build"
   },
   "repository": {
     "type": "git",
