@@ -32,7 +32,7 @@ const Index = () => {
           <li className="line-through">Snap</li>
           <li className="line-through">Move to another repo</li>
           <li className="line-through">TS support (tools)</li>
-          <li>Publish public package</li>
+          <li className="line-through">Publish public package</li>
           <div className="h-[1px] w-full bg-black/15" />
           <li>Undo/Redo</li>
           <li>Keyboard support</li>
