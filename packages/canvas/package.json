@@ -1,13 +1,13 @@
 {
   "name": "@reck753/canvas",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "main": "src/index.ts",
   "peerDependencies": {
     "rescript": "11.0.1"
   },
   "dependencies": {
-    "@reck753/canvas-rescript-uuid": "^0.0.13",
-    "@reck753/canvas-utils": "^0.0.13",
+    "@reck753/canvas-rescript-uuid": "^0.0.14",
+    "@reck753/canvas-utils": "^0.0.14",
     "@rescript/core": "0.6.0",
     "rescript": "11.0.1",
     "uuid": "8.3.2"
@@ -17,7 +17,7 @@
     "@types/uuid": "8.3.2"
   },
   "scripts": {
-    "delete-generated-files": "find . -name \"*.gen.tsx\" -exec rm -f {} \\;",
+    "delete-generated-files": "find . \\( -name \"*.gen.tsx\" -o -name \"*.bs.js\" \\) -exec rm -f {} \\;",
     "prepublishOnly": "yarn delete-generated-files && rescript clean && rescript build"
   },
   "repository": {
