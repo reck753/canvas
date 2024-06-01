@@ -20,5 +20,6 @@ try {
     console.log(`${pkg} published successfully.`);
   });
 } catch (error) {
-  console.error("Failed to publish packages:", error);
+  console.error("Failed to publish packages:", error.message);
+  console.error("Error details:", error);
 }
