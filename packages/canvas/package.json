@@ -1,17 +1,17 @@
 {
   "name": "@canvas/canvas",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "src/index.ts",
   "dependencies": {
-    "@canvas/rescript-uuid": "0.0.1",
-    "@canvas/utils": "0.0.1",
+    "@canvas/rescript-uuid": "^0.0.2",
+    "@canvas/utils": "^0.0.2",
+    "@rescript/core": "0.6.0",
     "@ryyppy/rescript-promise": "2.1.0",
     "rescript": "11.0.1",
-    "@rescript/core": "0.6.0",
     "uuid": "8.3.2"
   },
   "devDependencies": {
-    "@types/uuid": "8.3.2",
-    "@glennsl/rescript-jest": "0.11.0"
+    "@glennsl/rescript-jest": "0.11.0",
+    "@types/uuid": "8.3.2"
   }
 }
