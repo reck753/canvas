@@ -7,7 +7,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "prepublishOnly": "rescript clean && rescript build"
+    "delete-generated-files": "find . -name \"*.gen.tsx\" -exec rm -f {} \\;",
+    "prepublishOnly": "yarn delete-generated-files && rescript clean && rescript build"
   },
   "repository": {
     "type": "git",
