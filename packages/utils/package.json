@@ -1,6 +1,6 @@
 {
   "name": "@reck753/canvas-utils",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "main": "src/index.tsx",
   "peerDependencies": {
     "@rescript/core": "0.6.0",
