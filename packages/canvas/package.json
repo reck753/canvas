@@ -16,7 +16,8 @@
     "@types/uuid": "8.3.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "rescript clean && rescript build",
+    "publish-package": "yarn publish"
   },
   "repository": {
     "type": "git",

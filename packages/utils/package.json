@@ -7,7 +7,8 @@
     "rescript": "11.0.1"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "rescript clean && rescript build",
+    "publish-package": "yarn publish"
   },
   "repository": {
     "type": "git",

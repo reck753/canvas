@@ -2,13 +2,13 @@
   "name": "@reck753/canvas-rescript-uuid",
   "version": "0.0.5",
   "peerDependencies": {
-    "@rescript/core": "0.6.0",
     "rescript": "11.0.1",
     "uuid": "8.3.2"
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "rescript clean && rescript build",
+    "publish-package": "yarn publish"
   },
   "repository": {
     "type": "git",

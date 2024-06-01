@@ -1,5 +1,5 @@
 {
-  "name": "@reck753/canvas-utils",
+  "name": "@reck753/canvas-rescript-uuid",
   "namespace": false,
   "jsx": {
     "version": 4,
@@ -15,21 +15,21 @@
     {
       "dir": "./src",
       "subdirs": true
-    },
-    {
-      "dir": "../../rescript-shims",
-      "subdirs": true
     }
   ],
   "bs-dev-dependencies": [],
-  "bs-dependencies": ["@ryyppy/rescript-promise", "@rescript/core"],
+  "bs-dependencies": [],
   "gentypeconfig": {
     "language": "typescript",
+    "shims": {
+      "Js": "Js",
+      "PervasivesU": "PervasivesU"
+    },
     "importPath": "relative",
     "debug": {
       "all": false,
       "basic": false
     }
   },
-  "bsc-flags": ["-open RescriptCore"]
+  "bsc-flags": []
 }

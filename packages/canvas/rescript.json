@@ -1,0 +1,47 @@
+{
+  "name": "@reck753/canvas",
+  "namespace": false,
+  "jsx": {
+    "version": 4,
+    "mode": "automatic"
+  },
+  "package-specs": {
+    "module": "es6",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "ignored-dirs": ["__generated__"],
+  "sources": [
+    {
+      "dir": "__tests__",
+      "type": "dev"
+    },
+    {
+      "dir": "./src",
+      "subdirs": true
+    },
+    {
+      "dir": "rescript-shims",
+      "subdirs": true
+    }
+  ],
+  "bs-dev-dependencies": ["@glennsl/rescript-jest"],
+  "bs-dependencies": [
+    "@rescript/core",
+    "@reck753/canvas-utils",
+    "@reck753/canvas-rescript-uuid"
+  ],
+  "gentypeconfig": {
+    "language": "typescript",
+    "shims": {
+      "Js": "Js",
+      "PervasivesU": "PervasivesU"
+    },
+    "importPath": "relative",
+    "debug": {
+      "all": false,
+      "basic": false
+    }
+  },
+  "bsc-flags": ["-open RescriptCore"]
+}
