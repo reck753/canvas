@@ -17,7 +17,7 @@
       "type": "dev"
     },
     {
-      "dir": "./src",
+      "dir": "src",
       "subdirs": true
     },
     {
