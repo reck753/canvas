@@ -1,6 +1,4 @@
-name: "PR Code Check"
-
-env:
+name: "Code Check"
 
 on:
   pull_request:
