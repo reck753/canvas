@@ -1,5 +1,6 @@
 import Head from "next/head";
-import { make as RescriptExample } from "../src/rescript-example/Examples__RescriptExample.gen";
+// import { make as Example } from "../src/rescript-example/Examples__RescriptExample.gen";
+import { TypescriptExample as Example } from "../src/typescript-example/Examples__TypescriptExample";
 
 const Index = () => {
   return (
@@ -9,7 +10,7 @@ const Index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="flex p-[100px] gap-10">
-        <RescriptExample />
+        <Example />
         <div className="flex flex-col gap-1">
           <span className="font-bold">TODO</span>
           <li className="line-through">Resize One</li>
@@ -30,7 +31,7 @@ const Index = () => {
           <li>Render Agnostic (can be something other than canvas)</li>
           <li className="line-through">Snap</li>
           <li className="line-through">Move to another repo</li>
-          <li>TS support (tools)</li>
+          <li className="line-through">TS support (tools)</li>
           <li>Publish public package</li>
           <div className="h-[1px] w-full bg-black/15" />
           <li>Undo/Redo</li>

@@ -16,6 +16,7 @@ module Rect: {
     ...Vec.t,
     ...Size.t,
   }
+  @tag("type")
   type state = Idle | Drawing
 }
 
@@ -25,9 +26,11 @@ module Line: {
     start: Vec.t,
     end: Vec.t,
   }
+  @tag("type")
   type state = Idle | Drawing
 }
 
+@tag("type")
 type element = Line(Line.t) | Rect(Rect.t)
 
 module Corner: {
@@ -45,15 +48,19 @@ module Selection: {
     target: Vec.t,
   }
 
+  @tag("type")
   type state = Idle | Selecting(t) | Moving(move) | Resizing(Corner.t)
 }
 
 module State: {
+  @tag("type")
   type t = Selection(Selection.state) | Rect(Rect.state) | Line(Line.state)
 }
 
 module Store: {
+  @tag("type")
   type snapToGrid = No | Yes(float)
+  @genType
   type t = {
     state: State.t,
     snapToGrid: snapToGrid,
@@ -89,13 +96,16 @@ module Tool: {
     updateStore: (Store.t => Store.t) => unit,
     target: Canvas__CanvasUtils.JsxEventFixed.Mouse.target,
   }
+  @genType
   type style = {lineWidth?: float}
   type rectSettings = {...style, canResizeVertically?: bool, canResizeHorizontally?: bool}
   type lineSettings = {...style, canResizeStart?: bool, canResizeEnd?: bool}
+  @tag("type")
   type engine =
     | Selection
     | Rect(rectSettings)
     | Line(lineSettings)
+  @genType
   type rec t = {
     toolId: string,
     engine: engine,

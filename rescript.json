@@ -54,7 +54,8 @@
   "gentypeconfig": {
     "language": "typescript",
     "shims": {
-      "Js": "Js"
+      "Js": "Js",
+      "PervasivesU": "PervasivesU"
     },
     "importPath": "relative",
     "debug": {

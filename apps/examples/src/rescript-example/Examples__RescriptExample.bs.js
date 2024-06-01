@@ -25,7 +25,7 @@ var tools = [
   Canvas__Tools__Rect.tool,
   Canvas__Tools__Line.tool,
   (newrecord.engine = {
-      TAG: "Line",
+      type: "Line",
       _0: {
         lineWidth: 4,
         canResizeStart: false,
@@ -35,7 +35,7 @@ var tools = [
   {
     toolId: "rect1",
     engine: {
-      TAG: "Rect",
+      type: "Rect",
       _0: {
         canResizeVertically: false,
         canResizeHorizontally: false
@@ -67,7 +67,7 @@ var tools = [
           return ;
         }
         var element = {
-          TAG: "Rect",
+          type: "Rect",
           _0: {
             id: Uuid.v4(),
             toolId: match.selectedToolId,
@@ -83,7 +83,7 @@ var tools = [
         param.updateStore(function (prev) {
               return {
                       state: {
-                        TAG: "Selection",
+                        type: "Selection",
                         _0: "Idle"
                       },
                       snapToGrid: prev.snapToGrid,
@@ -110,11 +110,11 @@ function Examples__RescriptExample(props) {
   var match = React.useState(function () {
         return {
                 state: {
-                  TAG: "Selection",
+                  type: "Selection",
                   _0: "Idle"
                 },
                 snapToGrid: {
-                  TAG: "Yes",
+                  type: "Yes",
                   _0: 10
                 },
                 selectedToolId: "selection",
@@ -146,7 +146,7 @@ function Examples__RescriptExample(props) {
                   } else {
                     ctx.strokeStyle = Canvas__Style.elementStroke;
                   }
-                  if (element.TAG === "Line") {
+                  if (element.type === "Line") {
                     var line = element._0;
                     var end = line.end;
                     var start = line.start;
@@ -187,10 +187,10 @@ function Examples__RescriptExample(props) {
                   ctx.fillText(text$1, rectCenter.x, rectCenter.y);
                 });
             var match = store.state;
-            switch (match.TAG) {
+            switch (match.type) {
               case "Selection" :
                   var match$1 = match._0;
-                  if (typeof match$1 === "object" && match$1.TAG === "Selecting") {
+                  if (typeof match$1 === "object" && match$1.type === "Selecting") {
                     var match$2 = match$1._0;
                     var height = match$2.height;
                     var width = match$2.width;
@@ -222,13 +222,13 @@ function Examples__RescriptExample(props) {
   };
   var match$1 = store.state;
   var tmp;
-  switch (match$1.TAG) {
+  switch (match$1.type) {
     case "Selection" :
         var tmp$1 = match$1._0;
         if (typeof tmp$1 !== "object") {
           tmp = "Selection Idle";
         } else {
-          switch (tmp$1.TAG) {
+          switch (tmp$1.type) {
             case "Selecting" :
                 tmp = "Selecting";
                 break;
@@ -320,14 +320,14 @@ function Examples__RescriptExample(props) {
                                                           var match = tool.engine;
                                                           var tmp;
                                                           tmp = typeof match !== "object" ? ({
-                                                                TAG: "Selection",
+                                                                type: "Selection",
                                                                 _0: "Idle"
                                                               }) : (
-                                                              match.TAG === "Rect" ? ({
-                                                                    TAG: "Rect",
+                                                              match.type === "Rect" ? ({
+                                                                    type: "Rect",
                                                                     _0: "Idle"
                                                                   }) : ({
-                                                                    TAG: "Line",
+                                                                    type: "Line",
                                                                     _0: "Idle"
                                                                   })
                                                             );

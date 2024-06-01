@@ -16,6 +16,7 @@ module Rect = {
     ...Vec.t,
     ...Size.t,
   }
+  @tag("type")
   type state = Idle | Drawing
 }
 
@@ -25,9 +26,11 @@ module Line = {
     start: Vec.t,
     end: Vec.t,
   }
+  @tag("type")
   type state = Idle | Drawing
 }
 
+@tag("type")
 type element = Line(Line.t) | Rect(Rect.t)
 
 module Corner = {
@@ -44,15 +47,17 @@ module Selection = {
     origin: Vec.t,
     target: Vec.t,
   }
-
+  @tag("type")
   type state = Idle | Selecting(t) | Moving(move) | Resizing(Corner.t)
 }
 
 module State = {
+  @tag("type")
   type t = Selection(Selection.state) | Rect(Rect.state) | Line(Line.state)
 }
 
 module Store = {
+  @tag("type")
   type snapToGrid = No | Yes(float)
   type t = {
     state: State.t,
@@ -92,6 +97,7 @@ module Tool = {
   type style = {lineWidth?: float}
   type rectSettings = {...style, canResizeVertically?: bool, canResizeHorizontally?: bool}
   type lineSettings = {...style, canResizeStart?: bool, canResizeEnd?: bool}
+  @tag("type")
   type engine =
     | Selection
     | Rect(rectSettings)

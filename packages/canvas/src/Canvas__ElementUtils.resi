@@ -1,7 +1,9 @@
+@genType
 let getElementId: Canvas__Models.element => string
 let getElementZIndex: Canvas__Models.element => float
 let getToolId: Canvas__Models.element => string
 let updateElementAtPosition: (~elements: array<'a>, ~position: int, ~element: 'a) => array<'a>
+@genType
 let isSelected: (string, array<string>) => bool
 let intersectsSelection: (Canvas__Models.element, Canvas__Models.Selection.t) => bool
 let getElementAtPoint: (
@@ -34,17 +36,20 @@ let resizeRectInElements: (
 ) => array<Canvas__Models.element>
 let measureTextSize: (~text: string, ~font: string) => Canvas__Models.Size.t
 let getLineCenter: Canvas__Models.Line.t => Canvas__Models.Vec.t
+@genType
 let getLineCenterForText: (
   Canvas__Models.Line.t,
   ~text: string,
   ~font: string,
 ) => Canvas__Models.Vec.t
 let getRectCenter: Canvas__Models.Rect.t => Canvas__Models.Vec.t
+@genType
 let getRectCenterForText: (
   Canvas__Models.Rect.t,
   ~text: string,
   ~font: string,
 ) => Canvas__Models.Vec.t
+@genType
 let updateElementLabel: (
   array<Canvas__Models.element>,
   ~id: string,
@@ -58,5 +63,6 @@ let invokeOnDoubleClick: (
   ~updateStore: (Canvas__Models.Store.t => Canvas__Models.Store.t) => unit,
   ~store: Canvas__Models.Store.t,
 ) => unit
+@genType
 let roundNumberBySnapGridSize: (float, ~gridSize: float) => float
 let snapElementToGrid: (Canvas__Models.element, ~gridSize: float) => Canvas__Models.element

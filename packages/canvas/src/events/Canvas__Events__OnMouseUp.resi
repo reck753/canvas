@@ -1,3 +1,4 @@
+@genType
 let handler: (
   JsxEvent.Mouse.t,
   ~offsetX: float,

@@ -2,7 +2,7 @@
 
 
 function getSelectionState(state) {
-  switch (state.TAG) {
+  switch (state.type) {
     case "Selection" :
         return state._0;
     case "Rect" :
@@ -13,7 +13,7 @@ function getSelectionState(state) {
 }
 
 function getRectState(state) {
-  switch (state.TAG) {
+  switch (state.type) {
     case "Rect" :
         return state._0;
     case "Selection" :
@@ -24,7 +24,7 @@ function getRectState(state) {
 }
 
 function getLineState(state) {
-  switch (state.TAG) {
+  switch (state.type) {
     case "Selection" :
     case "Rect" :
         return ;

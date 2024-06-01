@@ -25,9 +25,9 @@ function tool_onStart(param) {
     return updateStore(function (prev) {
                 return {
                         state: {
-                          TAG: "Selection",
+                          type: "Selection",
                           _0: {
-                            TAG: "Selecting",
+                            type: "Selecting",
                             _0: {
                               x: clientX,
                               y: clientY,
@@ -75,9 +75,9 @@ function tool_onStart(param) {
     return updateStore(function (prev) {
                 return {
                         state: {
-                          TAG: "Selection",
+                          type: "Selection",
                           _0: {
-                            TAG: "Moving",
+                            type: "Moving",
                             _0: initialMove
                           }
                         },
@@ -95,9 +95,9 @@ function tool_onStart(param) {
         return updateStore(function (prev) {
                     return {
                             state: {
-                              TAG: "Selection",
+                              type: "Selection",
                               _0: {
-                                TAG: "Moving",
+                                type: "Moving",
                                 _0: initialMove
                               }
                             },
@@ -114,7 +114,7 @@ function tool_onStart(param) {
       var match$3 = Core__Option.map(clickedElementTool, (function (tool) {
               return tool.engine;
             }));
-      if (match$3 !== undefined && typeof match$3 === "object" && match$3.TAG !== "Rect") {
+      if (match$3 !== undefined && typeof match$3 === "object" && match$3.type !== "Rect") {
         var match$4 = match$3._0;
         var canResizeStart = Core__Option.getOr(match$4.canResizeStart, true);
         var canResizeEnd = Core__Option.getOr(match$4.canResizeEnd, true);
@@ -126,9 +126,9 @@ function tool_onStart(param) {
       return updateStore(function (prev) {
                   return {
                           state: {
-                            TAG: "Selection",
+                            type: "Selection",
                             _0: {
-                              TAG: "Resizing",
+                              type: "Resizing",
                               _0: corner
                             }
                           },
@@ -143,9 +143,9 @@ function tool_onStart(param) {
       return updateStore(function (prev) {
                   return {
                           state: {
-                            TAG: "Selection",
+                            type: "Selection",
                             _0: {
-                              TAG: "Moving",
+                              type: "Moving",
                               _0: initialMove
                             }
                           },
@@ -163,9 +163,9 @@ function tool_onStart(param) {
     return updateStore(function (prev) {
                 return {
                         state: {
-                          TAG: "Selection",
+                          type: "Selection",
                           _0: {
-                            TAG: "Moving",
+                            type: "Moving",
                             _0: initialMove
                           }
                         },
@@ -179,9 +179,9 @@ function tool_onStart(param) {
     return updateStore(function (prev) {
                 return {
                         state: {
-                          TAG: "Selection",
+                          type: "Selection",
                           _0: {
-                            TAG: "Moving",
+                            type: "Moving",
                             _0: initialMove
                           }
                         },
@@ -219,7 +219,7 @@ function tool_onMove(param) {
           return Canvas__ElementUtils.getElementId(element) === selectedElementId;
         });
     var cursor = Core__Option.map(selectedElement, (function (selectedElement) {
-            if (selectedElement.TAG === "Line") {
+            if (selectedElement.type === "Line") {
               return Canvas__SelectionUtils.getLineCursor(clientX, clientY, selectedElement._0, tools);
             } else {
               return Canvas__SelectionUtils.getRectCursor(clientX, clientY, selectedElement._0, tools);
@@ -229,7 +229,7 @@ function tool_onMove(param) {
                   target.style.cursor = Canvas__SelectionUtils.getCursorType(cursor);
                 }));
   }
-  switch (state.TAG) {
+  switch (state.type) {
     case "Selecting" :
         var selection = state._0;
         var selectedElements = elements.filter(function (element) {
@@ -240,9 +240,9 @@ function tool_onMove(param) {
         return updateStore(function (prev) {
                     return {
                             state: {
-                              TAG: "Selection",
+                              type: "Selection",
                               _0: {
-                                TAG: "Selecting",
+                                type: "Selecting",
                                 _0: {
                                   x: x,
                                   y: y,
@@ -278,9 +278,9 @@ function tool_onMove(param) {
         return updateStore(function (prev) {
                     return {
                             state: {
-                              TAG: "Selection",
+                              type: "Selection",
                               _0: {
-                                TAG: "Moving",
+                                type: "Moving",
                                 _0: {
                                   origin: move.origin,
                                   target: {
@@ -322,7 +322,7 @@ function tool_onMove(param) {
         var clientY$2 = match$4[1];
         var clientX$2 = match$4[0];
         return Core__Option.forEach(selectedElement$1, (function (selectedElement) {
-                      if (selectedElement.TAG === "Line") {
+                      if (selectedElement.type === "Line") {
                         var resizedLine = Canvas__SelectionUtils.resizeLine(selectedElement._0, clientX$2, clientY$2, corner);
                         return updateStore(function (prev) {
                                     return {
@@ -362,7 +362,7 @@ function tool_onEnd(param) {
     return updateStore(function (prev) {
                 return {
                         state: {
-                          TAG: "Selection",
+                          type: "Selection",
                           _0: "Idle"
                         },
                         snapToGrid: prev.snapToGrid,
@@ -372,14 +372,14 @@ function tool_onEnd(param) {
                       };
               });
   }
-  switch (state.TAG) {
+  switch (state.type) {
     case "Selecting" :
         var selection = state._0;
         if (Canvas__SelectionUtils.isClick(selection, 2)) {
           return updateStore(function (prev) {
                       return {
                               state: {
-                                TAG: "Selection",
+                                type: "Selection",
                                 _0: "Idle"
                               },
                               snapToGrid: prev.snapToGrid,
@@ -395,7 +395,7 @@ function tool_onEnd(param) {
                           });
                       return {
                               state: {
-                                TAG: "Selection",
+                                type: "Selection",
                                 _0: "Idle"
                               },
                               snapToGrid: prev.snapToGrid,
@@ -412,7 +412,7 @@ function tool_onEnd(param) {
           return updateStore(function (prev) {
                       return {
                               state: {
-                                TAG: "Selection",
+                                type: "Selection",
                                 _0: "Idle"
                               },
                               snapToGrid: prev.snapToGrid,
@@ -427,7 +427,7 @@ function tool_onEnd(param) {
                       if (clickedElement !== undefined && Canvas__ElementUtils.isElementSelected(clickedElement, prev.selectedElementIds)) {
                         return {
                                 state: {
-                                  TAG: "Selection",
+                                  type: "Selection",
                                   _0: "Idle"
                                 },
                                 snapToGrid: prev.snapToGrid,
@@ -438,7 +438,7 @@ function tool_onEnd(param) {
                       }
                       return {
                               state: {
-                                TAG: "Selection",
+                                type: "Selection",
                                 _0: "Idle"
                               },
                               snapToGrid: prev.snapToGrid,
@@ -457,7 +457,7 @@ function tool_onEnd(param) {
             return updateStore(function (prev) {
                         return {
                                 state: {
-                                  TAG: "Selection",
+                                  type: "Selection",
                                   _0: "Idle"
                                 },
                                 snapToGrid: prev.snapToGrid,
@@ -471,7 +471,7 @@ function tool_onEnd(param) {
         return updateStore(function (prev) {
                     return {
                             state: {
-                              TAG: "Selection",
+                              type: "Selection",
                               _0: "Idle"
                             },
                             snapToGrid: prev.snapToGrid,

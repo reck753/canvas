@@ -31,7 +31,7 @@ function isSelected(elementId, selectedElementIds) {
 }
 
 function intersectsSelection(element, selection) {
-  if (element.TAG === "Line") {
+  if (element.type === "Line") {
     return Canvas__SelectionUtils.lineIntersectsSelection(element._0, selection, Canvas__Constants.tolerance);
   } else {
     return Canvas__SelectionUtils.rectIntersectsSelection(element._0, selection);
@@ -43,7 +43,7 @@ function getElementAtPoint(elements, clientX, clientY, givenTolerance) {
           return b._0.zIndex - a._0.zIndex;
         }));
   return sortedElements.find(function (element) {
-              if (element.TAG === "Line") {
+              if (element.type === "Line") {
                 return Canvas__SelectionUtils.isPointNearLine(clientX, clientY, element._0, Canvas__Constants.tolerance);
               }
               var match = element._0;
@@ -67,12 +67,12 @@ function moveSelectedElements(elements, move, selectedElementIds, clientX, clien
               if (!isSelected(id, selectedElementIds)) {
                 return element;
               }
-              if (element.TAG === "Line") {
+              if (element.type === "Line") {
                 var line = element._0;
                 var end = line.end;
                 var start = line.start;
                 return {
-                        TAG: "Line",
+                        type: "Line",
                         _0: {
                           id: line.id,
                           toolId: line.toolId,
@@ -91,7 +91,7 @@ function moveSelectedElements(elements, move, selectedElementIds, clientX, clien
               }
               var rect = element._0;
               return {
-                      TAG: "Rect",
+                      type: "Rect",
                       _0: {
                         id: rect.id,
                         toolId: rect.toolId,
@@ -120,7 +120,7 @@ function resizeLineInElements(elements, resizedLine) {
   return elements.map(function (element) {
               if (resizedLine.id === element._0.id) {
                 return {
-                        TAG: "Line",
+                        type: "Line",
                         _0: resizedLine
                       };
               } else {
@@ -133,7 +133,7 @@ function resizeRectInElements(elements, resizedRect) {
   return elements.map(function (element) {
               if (resizedRect.id === element._0.id) {
                 return {
-                        TAG: "Rect",
+                        type: "Rect",
                         _0: resizedRect
                       };
               } else {
@@ -185,10 +185,10 @@ function updateElementLabel(elements, id, label) {
               if (element._0.id !== id) {
                 return element;
               }
-              if (element.TAG === "Line") {
+              if (element.type === "Line") {
                 var line = element._0;
                 return {
-                        TAG: "Line",
+                        type: "Line",
                         _0: {
                           id: line.id,
                           toolId: line.toolId,
@@ -201,7 +201,7 @@ function updateElementLabel(elements, id, label) {
               }
               var rect = element._0;
               return {
-                      TAG: "Rect",
+                      type: "Rect",
                       _0: {
                         id: rect.id,
                         toolId: rect.toolId,
@@ -249,10 +249,10 @@ function roundNumberBySnapGridSize(number, gridSize) {
 }
 
 function snapElementToGrid(element, gridSize) {
-  if (element.TAG === "Line") {
+  if (element.type === "Line") {
     var line = element._0;
     return {
-            TAG: "Line",
+            type: "Line",
             _0: {
               id: line.id,
               toolId: line.toolId,
@@ -271,7 +271,7 @@ function snapElementToGrid(element, gridSize) {
   }
   var rect = element._0;
   return {
-          TAG: "Rect",
+          type: "Rect",
           _0: {
             id: rect.id,
             toolId: rect.toolId,

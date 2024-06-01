@@ -7,7 +7,7 @@ Jest.describe("ElementUtils", (function () {
         Jest.describe("getElementId", (function () {
                 Jest.test("returns the id of a line", (function () {
                         return Jest.Expect.toEqual(Jest.Expect.expect(Canvas__ElementUtils.getElementId({
-                                            TAG: "Line",
+                                            type: "Line",
                                             _0: {
                                               id: "line1",
                                               toolId: "line",
@@ -26,7 +26,7 @@ Jest.describe("ElementUtils", (function () {
                       }));
                 Jest.test("returns the id of a rect", (function () {
                         return Jest.Expect.toEqual(Jest.Expect.expect(Canvas__ElementUtils.getElementId({
-                                            TAG: "Rect",
+                                            type: "Rect",
                                             _0: {
                                               id: "rect1",
                                               toolId: "rect",
@@ -43,7 +43,7 @@ Jest.describe("ElementUtils", (function () {
         Jest.describe("getElementZIndex", (function () {
                 Jest.test("returns the zIndex of a line", (function () {
                         return Jest.Expect.toEqual(Jest.Expect.expect(Canvas__ElementUtils.getElementZIndex({
-                                            TAG: "Line",
+                                            type: "Line",
                                             _0: {
                                               id: "line1",
                                               toolId: "line",
@@ -62,7 +62,7 @@ Jest.describe("ElementUtils", (function () {
                       }));
                 Jest.test("returns the zIndex of a rect", (function () {
                         return Jest.Expect.toEqual(Jest.Expect.expect(Canvas__ElementUtils.getElementZIndex({
-                                            TAG: "Rect",
+                                            type: "Rect",
                                             _0: {
                                               id: "rect1",
                                               toolId: "rect",
@@ -79,7 +79,7 @@ Jest.describe("ElementUtils", (function () {
         Jest.describe("updateElementAtPosition", (function () {
                 Jest.test("updates the element at a position", (function () {
                         var rect = {
-                          TAG: "Rect",
+                          type: "Rect",
                           _0: {
                             id: "rect1",
                             toolId: "rect",
@@ -93,7 +93,7 @@ Jest.describe("ElementUtils", (function () {
                         };
                         var elements = [
                           {
-                            TAG: "Line",
+                            type: "Line",
                             _0: {
                               id: "line1",
                               toolId: "line",
@@ -112,7 +112,7 @@ Jest.describe("ElementUtils", (function () {
                           rect
                         ];
                         var updatedLine = {
-                          TAG: "Line",
+                          type: "Line",
                           _0: {
                             id: "line1",
                             toolId: "line",
@@ -138,7 +138,7 @@ Jest.describe("ElementUtils", (function () {
         Jest.describe("isSelected", (function () {
                 Jest.test("returns true if the element is selected", (function () {
                         var selectedElementIds = [Canvas__ElementUtils.getElementId({
-                                TAG: "Line",
+                                type: "Line",
                                 _0: {
                                   id: "line1",
                                   toolId: "line",
@@ -158,7 +158,7 @@ Jest.describe("ElementUtils", (function () {
                       }));
                 Jest.test("returns false if the element is not selected", (function () {
                         var selectedElementIds = [Canvas__ElementUtils.getElementId({
-                                TAG: "Line",
+                                type: "Line",
                                 _0: {
                                   id: "line1",
                                   toolId: "line",
@@ -180,7 +180,7 @@ Jest.describe("ElementUtils", (function () {
         Jest.describe("getElementAtPoint", (function () {
                 Jest.test("returns the element at a point", (function () {
                         var line = {
-                          TAG: "Line",
+                          type: "Line",
                           _0: {
                             id: "line1",
                             toolId: "line",
@@ -199,7 +199,7 @@ Jest.describe("ElementUtils", (function () {
                         var elements = [
                           line,
                           {
-                            TAG: "Rect",
+                            type: "Rect",
                             _0: {
                               id: "rect1",
                               toolId: "rect",
@@ -218,7 +218,7 @@ Jest.describe("ElementUtils", (function () {
                 Jest.test("does not return an element if there is no element at the point", (function () {
                         var elements = [
                           {
-                            TAG: "Line",
+                            type: "Line",
                             _0: {
                               id: "line1",
                               toolId: "line",
@@ -235,7 +235,7 @@ Jest.describe("ElementUtils", (function () {
                             }
                           },
                           {
-                            TAG: "Rect",
+                            type: "Rect",
                             _0: {
                               id: "rect1",
                               toolId: "rect",
@@ -255,7 +255,7 @@ Jest.describe("ElementUtils", (function () {
         Jest.describe("moveSelectedElements", (function () {
                 Jest.test("moves the selected elements", (function () {
                         var rect = {
-                          TAG: "Rect",
+                          type: "Rect",
                           _0: {
                             id: "rect1",
                             toolId: "rect",
@@ -268,7 +268,7 @@ Jest.describe("ElementUtils", (function () {
                           }
                         };
                         var line = {
-                          TAG: "Line",
+                          type: "Line",
                           _0: {
                             id: "line1",
                             toolId: "line",
@@ -301,7 +301,7 @@ Jest.describe("ElementUtils", (function () {
                             }, selectedElementIds, 50, 50);
                         return Jest.Expect.toEqual(Jest.Expect.expect(movedElements), [
                                     {
-                                      TAG: "Line",
+                                      type: "Line",
                                       _0: {
                                         id: "line1",
                                         toolId: "line",
@@ -322,7 +322,7 @@ Jest.describe("ElementUtils", (function () {
                       }));
                 Jest.test("moves the selected elements while preserving the label", (function () {
                         var rect = {
-                          TAG: "Rect",
+                          type: "Rect",
                           _0: {
                             id: "rect1",
                             toolId: "rect",
@@ -335,7 +335,7 @@ Jest.describe("ElementUtils", (function () {
                           }
                         };
                         var line = {
-                          TAG: "Line",
+                          type: "Line",
                           _0: {
                             id: "line1",
                             toolId: "line",
@@ -352,7 +352,7 @@ Jest.describe("ElementUtils", (function () {
                           }
                         };
                         var line2 = {
-                          TAG: "Line",
+                          type: "Line",
                           _0: {
                             id: "line2",
                             toolId: "line",
@@ -389,7 +389,7 @@ Jest.describe("ElementUtils", (function () {
                             }, selectedElementIds, 50, 50);
                         return Jest.Expect.toEqual(Jest.Expect.expect(movedElements), [
                                     {
-                                      TAG: "Line",
+                                      type: "Line",
                                       _0: {
                                         id: "line1",
                                         toolId: "line",
@@ -406,7 +406,7 @@ Jest.describe("ElementUtils", (function () {
                                       }
                                     },
                                     {
-                                      TAG: "Line",
+                                      type: "Line",
                                       _0: {
                                         id: "line2",
                                         toolId: "line",
@@ -429,7 +429,7 @@ Jest.describe("ElementUtils", (function () {
         Jest.describe("isElementSelected", (function () {
                 Jest.test("returns true if the element is selected", (function () {
                         var line = {
-                          TAG: "Line",
+                          type: "Line",
                           _0: {
                             id: "line1",
                             toolId: "line",
@@ -450,7 +450,7 @@ Jest.describe("ElementUtils", (function () {
                       }));
                 Jest.test("returns false if the element is not selected", (function () {
                         var selectedElementIds = [Canvas__ElementUtils.getElementId({
-                                TAG: "Line",
+                                type: "Line",
                                 _0: {
                                   id: "line1",
                                   toolId: "line",
@@ -467,7 +467,7 @@ Jest.describe("ElementUtils", (function () {
                                 }
                               })];
                         return Jest.Expect.toBe(Jest.Expect.expect(Canvas__ElementUtils.isElementSelected({
-                                            TAG: "Rect",
+                                            type: "Rect",
                                             _0: {
                                               id: "rect1",
                                               toolId: "rect",
@@ -485,7 +485,7 @@ Jest.describe("ElementUtils", (function () {
                 Jest.test("returns the id of the first element", (function () {
                         var elements = [
                           {
-                            TAG: "Line",
+                            type: "Line",
                             _0: {
                               id: "line1",
                               toolId: "line",
@@ -502,7 +502,7 @@ Jest.describe("ElementUtils", (function () {
                             }
                           },
                           {
-                            TAG: "Rect",
+                            type: "Rect",
                             _0: {
                               id: "rect1",
                               toolId: "rect",
@@ -544,7 +544,7 @@ Jest.describe("ElementUtils", (function () {
         Jest.describe("snapElementToGrid", (function () {
                 Jest.test("snaps a line to a grid", (function () {
                         var snappedLine = Canvas__ElementUtils.snapElementToGrid({
-                              TAG: "Line",
+                              type: "Line",
                               _0: {
                                 id: "line1",
                                 toolId: "line",
@@ -561,7 +561,7 @@ Jest.describe("ElementUtils", (function () {
                               }
                             }, 5);
                         return Jest.Expect.toEqual(Jest.Expect.expect(snappedLine), {
-                                    TAG: "Line",
+                                    type: "Line",
                                     _0: {
                                       id: "line1",
                                       toolId: "line",
@@ -580,7 +580,7 @@ Jest.describe("ElementUtils", (function () {
                       }));
                 Jest.test("snaps a rect to a grid", (function () {
                         var snappedRect = Canvas__ElementUtils.snapElementToGrid({
-                              TAG: "Rect",
+                              type: "Rect",
                               _0: {
                                 id: "rect1",
                                 toolId: "rect",
@@ -593,7 +593,7 @@ Jest.describe("ElementUtils", (function () {
                               }
                             }, 5);
                         return Jest.Expect.toEqual(Jest.Expect.expect(snappedRect), {
-                                    TAG: "Rect",
+                                    type: "Rect",
                                     _0: {
                                       id: "rect1",
                                       toolId: "rect",

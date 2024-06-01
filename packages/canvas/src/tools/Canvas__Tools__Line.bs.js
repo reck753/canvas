@@ -5,7 +5,7 @@ import * as Canvas__StateUtils from "../Canvas__StateUtils.bs.js";
 import * as Canvas__ElementUtils from "../Canvas__ElementUtils.bs.js";
 
 var tool_engine = {
-  TAG: "Line",
+  type: "Line",
   _0: {
     canResizeStart: true,
     canResizeEnd: true
@@ -40,7 +40,7 @@ function tool_onStart(param) {
     return ;
   }
   var element = {
-    TAG: "Line",
+    type: "Line",
     _0: {
       id: Uuid.v4(),
       toolId: match.selectedToolId,
@@ -59,7 +59,7 @@ function tool_onStart(param) {
   param.updateStore(function (prev) {
         return {
                 state: {
-                  TAG: "Line",
+                  type: "Line",
                   _0: "Drawing"
                 },
                 snapToGrid: prev.snapToGrid,
@@ -86,12 +86,12 @@ function tool_onMove(param) {
   if (element === undefined) {
     return ;
   }
-  if (element.TAG !== "Line") {
+  if (element.type !== "Line") {
     return ;
   }
   var line = element._0;
   var element$1 = {
-    TAG: "Line",
+    type: "Line",
     _0: {
       id: line.id,
       toolId: line.toolId,
@@ -128,7 +128,7 @@ function tool_onEnd(param) {
     return updateStore(function (prev) {
                 return {
                         state: {
-                          TAG: "Line",
+                          type: "Line",
                           _0: "Idle"
                         },
                         snapToGrid: prev.snapToGrid,
@@ -144,7 +144,7 @@ function tool_onEnd(param) {
     return updateStore(function (prev) {
                 return {
                         state: {
-                          TAG: "Rect",
+                          type: "Rect",
                           _0: "Idle"
                         },
                         snapToGrid: prev.snapToGrid,
@@ -158,7 +158,7 @@ function tool_onEnd(param) {
   updateStore(function (prev) {
         return {
                 state: {
-                  TAG: "Line",
+                  type: "Line",
                   _0: "Idle"
                 },
                 snapToGrid: prev.snapToGrid,

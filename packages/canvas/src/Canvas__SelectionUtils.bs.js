@@ -173,7 +173,7 @@ function getRectCorner(clientX, clientY, param, tools) {
           return tool.engine;
         }));
   var match$1;
-  if (match !== undefined && !(typeof match !== "object" || match.TAG !== "Rect")) {
+  if (match !== undefined && !(typeof match !== "object" || match.type !== "Rect")) {
     var match$2 = match._0;
     match$1 = [
       Core__Option.getOr(match$2.canResizeHorizontally, true),
@@ -300,7 +300,7 @@ function getLineCorner(clientX, clientY, param, tools) {
           return tool.engine;
         }));
   var match$1;
-  if (match !== undefined && !(typeof match !== "object" || match.TAG === "Rect")) {
+  if (match !== undefined && !(typeof match !== "object" || match.type === "Rect")) {
     var match$2 = match._0;
     match$1 = [
       Core__Option.getOr(match$2.canResizeStart, true),
@@ -376,7 +376,7 @@ function getLineCursor(clientX, clientY, line, tools) {
 }
 
 function getElementCorner(clientX, clientY, element, tools) {
-  if (element.TAG === "Line") {
+  if (element.type === "Line") {
     return getLineCorner(clientX, clientY, element._0, tools);
   } else {
     return getRectCorner(clientX, clientY, element._0, tools);
