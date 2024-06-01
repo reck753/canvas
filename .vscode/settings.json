@@ -70,6 +70,5 @@
       "project": ["${workspaceFolder}/tsconfig.json"]
     }
   },
-  "git.branchProtection": ["main"],
   "rescript.settings.binaryPath": "/node_modules/rescript"
 }
