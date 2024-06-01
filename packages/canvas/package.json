@@ -2,12 +2,13 @@
   "name": "@reck753/canvas",
   "version": "0.0.4",
   "main": "src/index.ts",
+  "peerDependencies": {
+    "rescript": "11.0.1"
+  },
   "dependencies": {
     "@reck753/canvas-rescript-uuid": "^0.0.4",
     "@reck753/canvas-utils": "^0.0.4",
     "@rescript/core": "0.6.0",
-    "@ryyppy/rescript-promise": "2.1.0",
-    "rescript": "11.0.1",
     "uuid": "8.3.2"
   },
   "devDependencies": {
