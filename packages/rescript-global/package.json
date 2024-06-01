@@ -1,5 +1,5 @@
 {
-  "name": "@canvas/rescript-global",
+  "name": "@reck753/rescript-global",
   "version": "0.0.2",
   "dependencies": {
     "@rescript/core": "0.6.0",

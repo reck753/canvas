@@ -1,5 +1,5 @@
 {
-  "name": "@canvas/examples",
+  "name": "@reck753/examples",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -12,9 +12,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@canvas/canvas": "*",
-    "@canvas/tailwind-config": "*",
-    "@canvas/tailwind-utils": "*",
+    "@reck753/canvas": "*",
+    "@reck753/tailwind-config": "*",
+    "@reck753/tailwind-utils": "*",
     "autoprefixer": "10.4.17",
     "class-variance-authority": "0.7.0",
     "clsx": "2.0.0",

@@ -1,6 +1,6 @@
 import { useLayoutEffect, useState } from "react";
-import { cn } from "@canvas/tailwind-utils/src";
-import { Store, Tool, State, Element } from "@canvas/canvas/src/models";
+import { cn } from "@reck753/tailwind-utils/src";
+import { Store, Tool, State, Element } from "@reck753/canvas/src/models";
 import {
   getElementId,
   getLineCenterForText,
@@ -8,19 +8,19 @@ import {
   isSelected,
   roundNumberBySnapGridSize,
   updateElementLabel,
-} from "@canvas/canvas/src/element_utils";
+} from "@reck753/canvas/src/element_utils";
 import {
   onMouseDownHandler,
   onMouseMoveHandler,
   onMouseUpHandler,
-} from "@canvas/canvas/src/events/events";
-import CanvasStyle from "@canvas/canvas/src/style";
+} from "@reck753/canvas/src/events/events";
+import CanvasStyle from "@reck753/canvas/src/style";
 import {
   getOptStyleWithDefaults,
   getLineWidth,
-} from "@canvas/canvas/src/tool-utils";
-import { defaultTools } from "@canvas/canvas/src/tools/tools";
-import { getRectState } from "@canvas/canvas/src/state-utils";
+} from "@reck753/canvas/src/tool-utils";
+import { defaultTools } from "@reck753/canvas/src/tools/tools";
+import { getRectState } from "@reck753/canvas/src/state-utils";
 import { v4 } from "uuid";
 
 const getActiveStateDisplay = (state: State) => {

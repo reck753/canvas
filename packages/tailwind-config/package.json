@@ -1,5 +1,5 @@
 {
-  "name": "@canvas/tailwind-config",
+  "name": "@reck753/tailwind-config",
   "version": "0.0.2",
   "dependencies": {
     "tailwindcss": "3.4.1",

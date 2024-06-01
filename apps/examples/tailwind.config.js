@@ -1,1 +1,1 @@
-module.exports = require("@canvas/tailwind-config/tailwind.config");
+module.exports = require("@reck753/tailwind-config/tailwind.config");

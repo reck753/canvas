@@ -14,7 +14,7 @@ try {
 
   packagesToPublish.forEach(pkg => {
     console.log(`Publishing ${pkg}...`);
-    execSync(`yarn lerna exec --scope=${pkg} -- npm publish`, {
+    execSync(`yarn lerna exec --scope=@reck753/${pkg} -- npm publish`, {
       stdio: "inherit",
     });
     console.log(`${pkg} published successfully.`);

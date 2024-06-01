@@ -1,5 +1,5 @@
 {
-  "name": "@canvas/tailwind-utils",
+  "name": "@reck753/tailwind-utils",
   "version": "0.0.2",
   "main": "src/index.ts",
   "dependencies": {

@@ -8,7 +8,7 @@ const plugins = [withBundleAnalyzer];
 const nextConfig = {
   reactStrictMode: false,
   transpilePackages: [
-    "@canvas/canvas",
+    "@reck753/canvas",
     "@ryyppy/rescript-promise",
     "@rescript/core",
   ],
