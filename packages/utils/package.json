@@ -1,12 +1,11 @@
 {
   "name": "@reck753/canvas-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "src/index.tsx",
   "dependencies": {
     "@rescript/core": "0.6.0",
     "rescript": "11.0.1"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

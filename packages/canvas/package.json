@@ -1,10 +1,10 @@
 {
   "name": "@reck753/canvas",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "src/index.ts",
   "dependencies": {
-    "@reck753/canvas-rescript-uuid": "^0.0.2",
-    "@reck753/canvas-utils": "^0.0.2",
+    "@reck753/canvas-rescript-uuid": "^0.0.3",
+    "@reck753/canvas-utils": "^0.0.3",
     "@rescript/core": "0.6.0",
     "@ryyppy/rescript-promise": "2.1.0",
     "rescript": "11.0.1",

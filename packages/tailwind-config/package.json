@@ -1,6 +1,7 @@
 {
   "name": "@reck753/tailwind-config",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "private": true,
   "dependencies": {
     "tailwindcss": "3.4.1",
     "tailwindcss-animate": "1.0.7"

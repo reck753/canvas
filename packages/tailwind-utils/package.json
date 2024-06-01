@@ -1,6 +1,7 @@
 {
   "name": "@reck753/tailwind-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
+  "private": true,
   "main": "src/index.ts",
   "dependencies": {
     "clsx": "2.0.0",
