@@ -8,7 +8,8 @@
   "main": "index.js",
   "scripts": {
     "prepublishOnly": "rescript clean && rescript build",
-    "publish-package": "yarn publish"
+    "publish-package": "yarn publish",
+    "publish-me": "yarn prepublishOnly && yarn publish-package && git reset --hard HEAD"
   },
   "repository": {
     "type": "git",
