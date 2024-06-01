@@ -27,8 +27,11 @@ const Index = () => {
           <li className="line-through">Text inside elements</li>
           <li className="line-through">Configurable Line Width</li>
           <li className="line-through">Element onDoubleClick</li>
-          <li>More style settings</li>
-          <li>Render Agnostic (can be something other than canvas)</li>
+          <li className="line-through">More style settings</li>
+          <li>Remove all styling from the canvas package</li>
+          <li className="line-through">
+            Render Agnostic (can be something other than canvas)
+          </li>
           <li className="line-through">Snap</li>
           <li className="line-through">Move to another repo</li>
           <li className="line-through">TS support (tools)</li>
