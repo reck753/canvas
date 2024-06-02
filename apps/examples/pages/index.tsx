@@ -37,12 +37,18 @@ const Index = () => {
           <li className="line-through">TS support (tools)</li>
           <li className="line-through">Publish public package</li>
           <div className="h-[1px] w-full bg-black/15" />
+          <li>Metadata for elements which can be anything</li>
+          <li>Rotate</li>
           <li>Undo/Redo</li>
           <li>Keyboard support</li>
           <li>Grid</li>
+          <li>Infinite canvas by choice</li>
+          <li>Infinite Canvas Grid</li>
           <li>Zoom</li>
-          <li>Rotate</li>
-          <li>Ellipse</li>
+          <li>
+            Ellipse (is it just the rectangle? With a different selection
+            method?)
+          </li>
           <li>Resize Multiple</li>
         </div>
       </div>
