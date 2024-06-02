@@ -42,14 +42,18 @@ const Index = () => {
           <li>Undo/Redo</li>
           <li>Keyboard support</li>
           <li>Grid</li>
-          <li>Infinite canvas by choice</li>
+          <li>Infinite canvas by choice (Move (around) tool)</li>
+          <li>Move around by interacting with touch pad / mouse</li>
           <li>Infinite Canvas Grid</li>
           <li>Zoom</li>
+          <li>Segment Tool</li>
+          <li>Binding elements</li>
           <li>
             Ellipse (is it just the rectangle? With a different selection
             method?)
           </li>
           <li>Resize Multiple</li>
+          <li>Delete Tool (move around to delete)</li>
         </div>
       </div>
     </>
