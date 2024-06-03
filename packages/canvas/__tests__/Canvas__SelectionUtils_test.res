@@ -33,7 +33,7 @@ describe("SelectionUtils", () => {
   })
 
   describe("isPointNearLine", () => {
-    let testLine: Models.Line.t = {
+    let testLine: Models.Line.t<'meta> = {
       id: "1",
       toolId: "line",
       zIndex: 0.,
@@ -71,7 +71,7 @@ describe("SelectionUtils", () => {
     test(
       "returns the same rect if width and height are both positive",
       () => {
-        let rect: Models.Rect.t = {
+        let rect: Models.Rect.t<'meta> = {
           id: "1",
           toolId: "rect",
           zIndex: 0.,
@@ -87,7 +87,7 @@ describe("SelectionUtils", () => {
     test(
       "returns a rect with positive width and height if both are negative and adjusts x and y accordingly",
       () => {
-        let rect: Models.Rect.t = {
+        let rect: Models.Rect.t<'meta> = {
           id: "1",
           toolId: "rect",
           zIndex: 0.,
@@ -112,7 +112,7 @@ describe("SelectionUtils", () => {
     test(
       "returns a rect with positive width and height if width is negative",
       () => {
-        let rect: Models.Rect.t = {
+        let rect: Models.Rect.t<'meta> = {
           id: "1",
           toolId: "rect",
           zIndex: 0.,
@@ -137,7 +137,7 @@ describe("SelectionUtils", () => {
     test(
       "returns a rect with positive width and height if height is negative",
       () => {
-        let rect: Models.Rect.t = {
+        let rect: Models.Rect.t<'meta> = {
           id: "1",
           toolId: "rect",
           zIndex: 0.,
@@ -316,7 +316,7 @@ describe("SelectionUtils", () => {
   })
 
   describe("lineIntersectsSelection", () => {
-    let testLine: Models.Line.t = {
+    let testLine: Models.Line.t<'meta> = {
       id: "1",
       toolId: "line",
       zIndex: 0.,
@@ -375,7 +375,7 @@ describe("SelectionUtils", () => {
   })
 
   describe("rectIntersectsSelection", () => {
-    let testRect: Models.Rect.t = {
+    let testRect: Models.Rect.t<'meta> = {
       id: "1",
       toolId: "rect",
       zIndex: 0.,

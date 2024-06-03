@@ -72,7 +72,6 @@ var tools = [
             id: Uuid.v4(),
             toolId: match.selectedToolId,
             zIndex: param.nextIndex,
-            label: undefined,
             x: match$1[0] - 40 / 2,
             y: match$1[1] - 40 / 2,
             width: 40,
@@ -258,14 +257,32 @@ function Examples__RescriptExample(props) {
     var selectedElement = store.elements.find(function (element) {
           return Canvas__ElementUtils.getElementId(element) === store.selectedElementIds[0];
         });
+    var exit = 0;
+    var id;
+    var zIndex;
+    var label;
     if (selectedElement !== undefined) {
-      var match$3 = selectedElement._0;
-      var label = match$3.label;
-      var id = match$3.id;
+      if (selectedElement.type === "Line") {
+        var match$3 = selectedElement._0;
+        id = match$3.id;
+        zIndex = match$3.zIndex;
+        label = match$3.label;
+        exit = 1;
+      } else {
+        var match$4 = selectedElement._0;
+        id = match$4.id;
+        zIndex = match$4.zIndex;
+        label = match$4.label;
+        exit = 1;
+      }
+    } else {
+      tmp$2 = null;
+    }
+    if (exit === 1) {
       tmp$2 = JsxRuntime.jsxs("div", {
             children: [
               JsxRuntime.jsx("span", {
-                    children: "Selected element: " + Core__Option.getOr(label, match$3.zIndex.toString())
+                    children: "Selected element: " + Core__Option.getOr(label, zIndex.toString())
                   }),
               JsxRuntime.jsx("input", {
                     className: "max-w-[400px] border rounded p-2 h-10",
@@ -289,9 +306,8 @@ function Examples__RescriptExample(props) {
             ],
             className: "flex flex-col gap-2"
           });
-    } else {
-      tmp$2 = null;
     }
+    
   }
   return JsxRuntime.jsxs("div", {
               children: [

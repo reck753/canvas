@@ -11,4 +11,4 @@ import type {Store_t as Canvas__Models_Store_t} from '../../../../packages/canva
 
 import type {Tool_t as Canvas__Models_Tool_t} from '../../../../packages/canvas/src/Canvas__Models.gen';
 
-export const handler: (_1:PervasivesU_JsxEvent_Mouse_t, offsetX:number, offsetY:number, store:Canvas__Models_Store_t, tools:Canvas__Models_Tool_t[], updateStore:((_1:((_1:Canvas__Models_Store_t) => Canvas__Models_Store_t)) => void)) => void = Canvas__Events__OnMouseDownJS.handler as any;
+export const handler: <meta>(_1:PervasivesU_JsxEvent_Mouse_t, offsetX:number, offsetY:number, store:Canvas__Models_Store_t<meta>, tools:Canvas__Models_Tool_t<meta>[], updateStore:((_1:((_1:Canvas__Models_Store_t<meta>) => Canvas__Models_Store_t<meta>)) => void)) => void = Canvas__Events__OnMouseDownJS.handler as any;

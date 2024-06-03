@@ -7,12 +7,18 @@ module Size = {
 }
 
 module Element = {
-  type t = {id: string, toolId: string, zIndex: float, label: option<string>}
+  type t<'meta> = {
+    id: string,
+    toolId: string,
+    zIndex: float,
+    label: option<string>,
+    metadata?: 'meta,
+  }
 }
 
 module Rect = {
-  type t = {
-    ...Element.t,
+  type t<'meta> = {
+    ...Element.t<'meta>,
     ...Vec.t,
     ...Size.t,
   }
@@ -21,8 +27,8 @@ module Rect = {
 }
 
 module Line = {
-  type t = {
-    ...Element.t,
+  type t<'meta> = {
+    ...Element.t<'meta>,
     start: Vec.t,
     end: Vec.t,
   }
@@ -31,7 +37,7 @@ module Line = {
 }
 
 @tag("type")
-type element = Line(Line.t) | Rect(Rect.t)
+type element<'meta> = Line(Line.t<'meta>) | Rect(Rect.t<'meta>)
 
 module Corner = {
   type t = Start | End | TopLeft | TopRight | BottomLeft | BottomRight | Top | Bottom | Left | Right
@@ -59,39 +65,39 @@ module State = {
 module Store = {
   @tag("type")
   type snapToGrid = No | Yes(float)
-  type t = {
+  type t<'meta> = {
     state: State.t,
     snapToGrid: snapToGrid,
     selectedToolId: string,
     selectedElementIds: array<string>,
-    elements: array<element>,
+    elements: array<element<'meta>>,
   }
 }
 
 module Tool = {
-  type sharedCallbackArguments<'tool> = {
+  type sharedCallbackArguments<'tool, 'meta> = {
     clientX: float,
     clientY: float,
-    store: Store.t,
-    updateStore: (Store.t => Store.t) => unit,
+    store: Store.t<'meta>,
+    updateStore: (Store.t<'meta> => Store.t<'meta>) => unit,
     target: Canvas__CanvasUtils.JsxEventFixed.Mouse.target,
     tools: array<'tool>,
   }
-  type onStartArguments<'tool> = {
-    ...sharedCallbackArguments<'tool>,
+  type onStartArguments<'tool, 'meta> = {
+    ...sharedCallbackArguments<'tool, 'meta>,
     nextIndex: float,
   }
-  type onMoveArguments<'tool> = {
-    ...sharedCallbackArguments<'tool>,
+  type onMoveArguments<'tool, 'meta> = {
+    ...sharedCallbackArguments<'tool, 'meta>,
   }
-  type onEndArguments<'tool> = {
-    ...sharedCallbackArguments<'tool>,
+  type onEndArguments<'tool, 'meta> = {
+    ...sharedCallbackArguments<'tool, 'meta>,
   }
-  type onDoubleClickArguments<'tool> = {
+  type onDoubleClickArguments<'tool, 'meta> = {
     tools: array<'tool>,
-    clickedElement: element,
-    store: Store.t,
-    updateStore: (Store.t => Store.t) => unit,
+    clickedElement: element<'meta>,
+    store: Store.t<'meta>,
+    updateStore: (Store.t<'meta> => Store.t<'meta>) => unit,
     target: Canvas__CanvasUtils.JsxEventFixed.Mouse.target,
   }
   type style = {lineWidth?: float}
@@ -102,13 +108,13 @@ module Tool = {
     | Selection
     | Rect(rectSettings)
     | Line(lineSettings)
-  type rec t = {
+  type rec t<'meta> = {
     toolId: string,
     engine: engine,
-    onStart: onStartArguments<t> => unit,
-    onMove: onMoveArguments<t> => unit,
-    onEnd: onEndArguments<t> => unit,
-    onDoubleClick?: onDoubleClickArguments<t> => unit,
+    onStart: onStartArguments<t<'meta>, 'meta> => unit,
+    onMove: onMoveArguments<t<'meta>, 'meta> => unit,
+    onEnd: onEndArguments<t<'meta>, 'meta> => unit,
+    onDoubleClick?: onDoubleClickArguments<t<'meta>, 'meta> => unit,
   }
 }
 

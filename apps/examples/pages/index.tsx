@@ -37,7 +37,9 @@ const Index = () => {
           <li className="line-through">TS support (tools)</li>
           <li className="line-through">Publish public package</li>
           <div className="h-[1px] w-full bg-black/15" />
-          <li>Metadata for elements which can be anything</li>
+          <li className="line-through">
+            Metadata for elements which can be anything
+          </li>
           <li>Rotate</li>
           <li>Undo/Redo</li>
           <li>Keyboard support</li>

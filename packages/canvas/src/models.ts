@@ -6,8 +6,8 @@ import {
   Tool_style,
 } from "./Canvas__Models.gen";
 
-export type Tool = Tool_t;
+export type Tool<Meta> = Tool_t<Meta>;
 export type ToolStyle = Tool_style;
-export type Store = Store_t;
+export type Store<Meta> = Store_t<Meta>;
 export type State = State_t;
-export type Element = element;
+export type Element<Meta> = element<Meta>;

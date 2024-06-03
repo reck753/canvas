@@ -8,7 +8,7 @@ module Tools = Canvas.Tools
 module Events = Canvas.Events
 
 // Accept through props instead
-let tools: array<Tool.t> = [
+let tools: array<Tool.t<'meta>> = [
   Tools.Selection.tool,
   Tools.Rect.tool,
   Tools.Line.tool,
@@ -50,7 +50,7 @@ let tools: array<Tool.t> = [
       | None => ()
       | Some(Drawing) => ()
       | Some(Idle) =>
-        let element: element = Rect({
+        let element: element<'meta> = Rect({
           id: RescriptUuid.make(),
           zIndex: nextIndex,
           toolId: selectedToolId,

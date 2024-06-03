@@ -6,8 +6,8 @@ let handler = (
   e: JsxEvent.Mouse.t,
   ~offsetX,
   ~offsetY,
-  ~store: Store.t,
-  ~tools: array<Tool.t>,
+  ~store: Store.t<'meta>,
+  ~tools: array<Tool.t<'meta>>,
   ~updateStore,
 ) => {
   // Default is prevented so that mouse events wouldn't interact
@@ -16,7 +16,7 @@ let handler = (
   let target = e->PervasivesU.JsxEvent.Mouse.target->CanvasUtils.JsxEventFixed.Mouse.target
   let clientX = e->CanvasUtils.getClientX->CanvasUtils.normalizeClientX(offsetX)
   let clientY = e->CanvasUtils.getClientY->CanvasUtils.normalizeClientY(offsetY)
-  let highestZIndex = store.elements->Array.reduce(0., (acc, element: element) =>
+  let highestZIndex = store.elements->Array.reduce(0., (acc, element: element<'meta>) =>
     switch element {
     | Line({zIndex}) | Rect({zIndex}) => Math.max(acc, zIndex)
     }

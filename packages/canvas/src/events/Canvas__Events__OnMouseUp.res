@@ -5,8 +5,8 @@ let handler = (
   e: JsxEvent.Mouse.t,
   ~offsetX,
   ~offsetY,
-  ~store: Store.t,
-  ~tools: array<Tool.t>,
+  ~store: Store.t<'meta>,
+  ~tools: array<Tool.t<'meta>>,
   ~updateStore,
 ) => {
   let target = e->PervasivesU.JsxEvent.Mouse.target->CanvasUtils.JsxEventFixed.Mouse.target

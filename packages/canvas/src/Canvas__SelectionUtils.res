@@ -1,7 +1,7 @@
 open Canvas__Models
 open Canvas__Constants
 
-let normalizeRect = (rect: Rect.t): Rect.t => {
+let normalizeRect = (rect: Rect.t<'meta>): Rect.t<'meta> => {
   let x = rect.width >= 0. ? rect.x : rect.x +. rect.width
   let y = rect.height >= 0. ? rect.y : rect.y +. rect.height
   let width = Math.abs(rect.width)
@@ -112,7 +112,7 @@ let distToLineSegmentSquared = (px, py, x1, y1, x2, y2) => {
 // a certain tolerance distance from the line segment.
 // It uses distToLineSegmentSquared and compares the result against
 // the squared tolerance to avoid unnecessary square root calculations.
-let isPointNearLine = (px, py, line: Line.t, tolerance) => {
+let isPointNearLine = (px, py, line: Line.t<'meta>, tolerance) => {
   let distanceSquared = distToLineSegmentSquared(
     px,
     py,
@@ -124,7 +124,7 @@ let isPointNearLine = (px, py, line: Line.t, tolerance) => {
   distanceSquared <= sqr(tolerance)
 }
 
-let lineIntersectsSelection = (line: Line.t, selection: Selection.t, tolerance) => {
+let lineIntersectsSelection = (line: Line.t<'meta>, selection: Selection.t, tolerance) => {
   let normalizedSelection = normalizeSelection(selection)
   let expandedSelection = expandSelectionBox(normalizedSelection, tolerance)
   let selection = expandedSelection
@@ -150,7 +150,7 @@ let lineIntersectsSelection = (line: Line.t, selection: Selection.t, tolerance) 
   }
 }
 
-let rectIntersectsSelection = (rect: Rect.t, selection: Selection.t) => {
+let rectIntersectsSelection = (rect: Rect.t<'meta>, selection: Selection.t) => {
   let normalizedRect = normalizeRect(rect)
   let normalizedSelection = normalizeSelection(selection)
 
@@ -186,8 +186,8 @@ let isPointNearPoint = (px, py, qx, qy, tolerance) => {
 let getRectCorner = (
   clientX,
   clientY,
-  {x, y, width, height, toolId}: Rect.t,
-  tools: array<Tool.t>,
+  {x, y, width, height, toolId}: Rect.t<'meta>,
+  tools: array<Tool.t<'meta>>,
 ): option<Corner.t> => {
   let elementTool = tools->Array.find(tool => tool.toolId === toolId)
   let (canResizeHorizontally, canResizeVertically) = switch elementTool->Option.map(tool =>
@@ -260,9 +260,12 @@ let getRectCorner = (
   }
 }
 
-let getLineCorner = (clientX, clientY, {start, end, toolId}: Line.t, tools: array<Tool.t>): option<
-  Corner.t,
-> => {
+let getLineCorner = (
+  clientX,
+  clientY,
+  {start, end, toolId}: Line.t<'meta>,
+  tools: array<Tool.t<'meta>>,
+): option<Corner.t> => {
   let elementTool = tools->Array.find(tool => tool.toolId === toolId)
   let (canResizeStart, canResizeEnd) = switch elementTool->Option.map(tool => tool.engine) {
   | Some(Line({?canResizeStart, ?canResizeEnd})) => (
@@ -289,7 +292,7 @@ let getLineCorner = (clientX, clientY, {start, end, toolId}: Line.t, tools: arra
   }
 }
 
-let getRectCursor = (clientX, clientY, rect: Rect.t, tools): Cursor.t => {
+let getRectCursor = (clientX, clientY, rect: Rect.t<'meta>, tools): Cursor.t => {
   let corner = getRectCorner(clientX, clientY, normalizeRect(rect), tools)
 
   switch corner {
@@ -301,7 +304,12 @@ let getRectCursor = (clientX, clientY, rect: Rect.t, tools): Cursor.t => {
   }
 }
 
-let getLineCursor = (clientX, clientY, line: Line.t, tools: array<Tool.t>): Cursor.t => {
+let getLineCursor = (
+  clientX,
+  clientY,
+  line: Line.t<'meta>,
+  tools: array<Tool.t<'meta>>,
+): Cursor.t => {
   let corner = getLineCorner(clientX, clientY, line, tools)
 
   switch corner {
@@ -310,9 +318,12 @@ let getLineCursor = (clientX, clientY, line: Line.t, tools: array<Tool.t>): Curs
   }
 }
 
-let getElementCorner = (clientX, clientY, element: element, tools: array<Tool.t>): option<
-  Corner.t,
-> =>
+let getElementCorner = (
+  clientX,
+  clientY,
+  element: element<'meta>,
+  tools: array<Tool.t<'meta>>,
+): option<Corner.t> =>
   switch element {
   | Rect(rect) => getRectCorner(clientX, clientY, rect, tools)
   | Line(line) => getLineCorner(clientX, clientY, line, tools)
@@ -329,7 +340,7 @@ let getCursorType = (cursor: Cursor.t) => {
   }
 }
 
-let resizeRect = (rect: Rect.t, clientX, clientY, corner: Corner.t): Rect.t => {
+let resizeRect = (rect: Rect.t<'meta>, clientX, clientY, corner: Corner.t): Rect.t<'meta> => {
   switch corner {
   | TopLeft => {
       ...rect,
@@ -377,7 +388,7 @@ let resizeRect = (rect: Rect.t, clientX, clientY, corner: Corner.t): Rect.t => {
   }
 }
 
-let resizeLine = (line: Line.t, clientX, clientY, corner: Corner.t): Line.t => {
+let resizeLine = (line: Line.t<'meta>, clientX, clientY, corner: Corner.t): Line.t<'meta> => {
   switch corner {
   | Start => {...line, start: {x: clientX, y: clientY}}
   | End => {...line, end: {x: clientX, y: clientY}}

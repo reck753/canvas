@@ -7,11 +7,12 @@ import type {JsxEventFixed_Mouse_target as Canvas__CanvasUtils_JsxEventFixed_Mou
 
 export type Vec_t = { readonly x: number; readonly y: number };
 
-export type Rect_t = {
+export type Rect_t<meta> = {
   readonly id: string; 
   readonly toolId: string; 
   readonly zIndex: number; 
   readonly label: (undefined | string); 
+  readonly metadata?: meta; 
   readonly x: number; 
   readonly y: number; 
   readonly width: number; 
@@ -20,20 +21,21 @@ export type Rect_t = {
 
 export type Rect_state = "Idle" | "Drawing";
 
-export type Line_t = {
+export type Line_t<meta> = {
   readonly id: string; 
   readonly toolId: string; 
   readonly zIndex: number; 
   readonly label: (undefined | string); 
+  readonly metadata?: meta; 
   readonly start: Vec_t; 
   readonly end: Vec_t
 };
 
 export type Line_state = "Idle" | "Drawing";
 
-export type element = 
-    { type: "Line"; _0: Line_t }
-  | { type: "Rect"; _0: Rect_t };
+export type element<meta> = 
+    { type: "Line"; _0: Line_t<meta> }
+  | { type: "Rect"; _0: Rect_t<meta> };
 
 export type Corner_t = 
     "Start"
@@ -69,47 +71,47 @@ export type State_t =
 
 export type Store_snapToGrid = "No" | { type: "Yes"; _0: number };
 
-export type Store_t = {
+export type Store_t<meta> = {
   readonly state: State_t; 
   readonly snapToGrid: Store_snapToGrid; 
   readonly selectedToolId: string; 
   readonly selectedElementIds: string[]; 
-  readonly elements: element[]
+  readonly elements: element<meta>[]
 };
 
-export type Tool_onStartArguments<tool> = {
+export type Tool_onStartArguments<tool,meta> = {
   readonly clientX: number; 
   readonly clientY: number; 
-  readonly store: Store_t; 
-  readonly updateStore: (_1:((_1:Store_t) => Store_t)) => void; 
+  readonly store: Store_t<meta>; 
+  readonly updateStore: (_1:((_1:Store_t<meta>) => Store_t<meta>)) => void; 
   readonly target: Canvas__CanvasUtils_JsxEventFixed_Mouse_target; 
   readonly tools: tool[]; 
   readonly nextIndex: number
 };
 
-export type Tool_onMoveArguments<tool> = {
+export type Tool_onMoveArguments<tool,meta> = {
   readonly clientX: number; 
   readonly clientY: number; 
-  readonly store: Store_t; 
-  readonly updateStore: (_1:((_1:Store_t) => Store_t)) => void; 
+  readonly store: Store_t<meta>; 
+  readonly updateStore: (_1:((_1:Store_t<meta>) => Store_t<meta>)) => void; 
   readonly target: Canvas__CanvasUtils_JsxEventFixed_Mouse_target; 
   readonly tools: tool[]
 };
 
-export type Tool_onEndArguments<tool> = {
+export type Tool_onEndArguments<tool,meta> = {
   readonly clientX: number; 
   readonly clientY: number; 
-  readonly store: Store_t; 
-  readonly updateStore: (_1:((_1:Store_t) => Store_t)) => void; 
+  readonly store: Store_t<meta>; 
+  readonly updateStore: (_1:((_1:Store_t<meta>) => Store_t<meta>)) => void; 
   readonly target: Canvas__CanvasUtils_JsxEventFixed_Mouse_target; 
   readonly tools: tool[]
 };
 
-export type Tool_onDoubleClickArguments<tool> = {
+export type Tool_onDoubleClickArguments<tool,meta> = {
   readonly tools: tool[]; 
-  readonly clickedElement: element; 
-  readonly store: Store_t; 
-  readonly updateStore: (_1:((_1:Store_t) => Store_t)) => void; 
+  readonly clickedElement: element<meta>; 
+  readonly store: Store_t<meta>; 
+  readonly updateStore: (_1:((_1:Store_t<meta>) => Store_t<meta>)) => void; 
   readonly target: Canvas__CanvasUtils_JsxEventFixed_Mouse_target
 };
 
@@ -132,11 +134,11 @@ export type Tool_engine =
   | { type: "Rect"; _0: Tool_rectSettings }
   | { type: "Line"; _0: Tool_lineSettings };
 
-export type Tool_t = {
+export type Tool_t<meta> = {
   readonly toolId: string; 
   readonly engine: Tool_engine; 
-  readonly onStart: (_1:Tool_onStartArguments<Tool_t>) => void; 
-  readonly onMove: (_1:Tool_onMoveArguments<Tool_t>) => void; 
-  readonly onEnd: (_1:Tool_onEndArguments<Tool_t>) => void; 
-  readonly onDoubleClick?: (_1:Tool_onDoubleClickArguments<Tool_t>) => void
+  readonly onStart: (_1:Tool_onStartArguments<Tool_t<meta>,meta>) => void; 
+  readonly onMove: (_1:Tool_onMoveArguments<Tool_t<meta>,meta>) => void; 
+  readonly onEnd: (_1:Tool_onEndArguments<Tool_t<meta>,meta>) => void; 
+  readonly onDoubleClick?: (_1:Tool_onDoubleClickArguments<Tool_t<meta>,meta>) => void
 };

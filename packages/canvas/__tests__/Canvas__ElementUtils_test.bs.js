@@ -12,7 +12,6 @@ Jest.describe("ElementUtils", (function () {
                                               id: "line1",
                                               toolId: "line",
                                               zIndex: 1,
-                                              label: undefined,
                                               start: {
                                                 x: 0,
                                                 y: 0
@@ -31,7 +30,6 @@ Jest.describe("ElementUtils", (function () {
                                               id: "rect1",
                                               toolId: "rect",
                                               zIndex: 1,
-                                              label: undefined,
                                               x: 0,
                                               y: 0,
                                               width: 100,
@@ -48,7 +46,6 @@ Jest.describe("ElementUtils", (function () {
                                               id: "line1",
                                               toolId: "line",
                                               zIndex: 1,
-                                              label: undefined,
                                               start: {
                                                 x: 0,
                                                 y: 0
@@ -67,7 +64,6 @@ Jest.describe("ElementUtils", (function () {
                                               id: "rect1",
                                               toolId: "rect",
                                               zIndex: 1,
-                                              label: undefined,
                                               x: 0,
                                               y: 0,
                                               width: 100,
@@ -84,7 +80,6 @@ Jest.describe("ElementUtils", (function () {
                             id: "rect1",
                             toolId: "rect",
                             zIndex: 1,
-                            label: undefined,
                             x: 0,
                             y: 0,
                             width: 100,
@@ -98,7 +93,6 @@ Jest.describe("ElementUtils", (function () {
                               id: "line1",
                               toolId: "line",
                               zIndex: 1,
-                              label: undefined,
                               start: {
                                 x: 0,
                                 y: 0
@@ -117,7 +111,6 @@ Jest.describe("ElementUtils", (function () {
                             id: "line1",
                             toolId: "line",
                             zIndex: 1,
-                            label: undefined,
                             start: {
                               x: 0,
                               y: 0
@@ -143,7 +136,6 @@ Jest.describe("ElementUtils", (function () {
                                   id: "line1",
                                   toolId: "line",
                                   zIndex: 1,
-                                  label: undefined,
                                   start: {
                                     x: 0,
                                     y: 0
@@ -163,7 +155,6 @@ Jest.describe("ElementUtils", (function () {
                                   id: "line1",
                                   toolId: "line",
                                   zIndex: 1,
-                                  label: undefined,
                                   start: {
                                     x: 0,
                                     y: 0
@@ -185,7 +176,6 @@ Jest.describe("ElementUtils", (function () {
                             id: "line1",
                             toolId: "line",
                             zIndex: 1,
-                            label: undefined,
                             start: {
                               x: 0,
                               y: 0
@@ -204,7 +194,6 @@ Jest.describe("ElementUtils", (function () {
                               id: "rect1",
                               toolId: "rect",
                               zIndex: 1,
-                              label: undefined,
                               x: 0,
                               y: 0,
                               width: 100,
@@ -223,7 +212,6 @@ Jest.describe("ElementUtils", (function () {
                               id: "line1",
                               toolId: "line",
                               zIndex: 1,
-                              label: undefined,
                               start: {
                                 x: 0,
                                 y: 0
@@ -240,7 +228,6 @@ Jest.describe("ElementUtils", (function () {
                               id: "rect1",
                               toolId: "rect",
                               zIndex: 1,
-                              label: undefined,
                               x: 0,
                               y: 0,
                               width: 100,
@@ -260,7 +247,6 @@ Jest.describe("ElementUtils", (function () {
                             id: "rect1",
                             toolId: "rect",
                             zIndex: 1,
-                            label: undefined,
                             x: 0,
                             y: 0,
                             width: 100,
@@ -273,7 +259,6 @@ Jest.describe("ElementUtils", (function () {
                             id: "line1",
                             toolId: "line",
                             zIndex: 1,
-                            label: undefined,
                             start: {
                               x: 0,
                               y: 0
@@ -306,7 +291,6 @@ Jest.describe("ElementUtils", (function () {
                                         id: "line1",
                                         toolId: "line",
                                         zIndex: 1,
-                                        label: undefined,
                                         start: {
                                           x: 50,
                                           y: 50
@@ -357,7 +341,6 @@ Jest.describe("ElementUtils", (function () {
                             id: "line2",
                             toolId: "line",
                             zIndex: 1,
-                            label: undefined,
                             start: {
                               x: 0,
                               y: 0
@@ -411,7 +394,6 @@ Jest.describe("ElementUtils", (function () {
                                         id: "line2",
                                         toolId: "line",
                                         zIndex: 1,
-                                        label: undefined,
                                         start: {
                                           x: 50,
                                           y: 50
@@ -434,7 +416,6 @@ Jest.describe("ElementUtils", (function () {
                             id: "line1",
                             toolId: "line",
                             zIndex: 1,
-                            label: undefined,
                             start: {
                               x: 0,
                               y: 0
@@ -455,7 +436,6 @@ Jest.describe("ElementUtils", (function () {
                                   id: "line1",
                                   toolId: "line",
                                   zIndex: 1,
-                                  label: undefined,
                                   start: {
                                     x: 0,
                                     y: 0
@@ -472,7 +452,6 @@ Jest.describe("ElementUtils", (function () {
                                               id: "rect1",
                                               toolId: "rect",
                                               zIndex: 1,
-                                              label: undefined,
                                               x: 0,
                                               y: 0,
                                               width: 100,
@@ -490,7 +469,6 @@ Jest.describe("ElementUtils", (function () {
                               id: "line1",
                               toolId: "line",
                               zIndex: 1,
-                              label: undefined,
                               start: {
                                 x: 0,
                                 y: 0
@@ -507,7 +485,6 @@ Jest.describe("ElementUtils", (function () {
                               id: "rect1",
                               toolId: "rect",
                               zIndex: 1,
-                              label: undefined,
                               x: 0,
                               y: 0,
                               width: 100,
@@ -549,7 +526,6 @@ Jest.describe("ElementUtils", (function () {
                                 id: "line1",
                                 toolId: "line",
                                 zIndex: 1,
-                                label: undefined,
                                 start: {
                                   x: 12,
                                   y: 14
@@ -566,7 +542,6 @@ Jest.describe("ElementUtils", (function () {
                                       id: "line1",
                                       toolId: "line",
                                       zIndex: 1,
-                                      label: undefined,
                                       start: {
                                         x: 10,
                                         y: 15
@@ -585,7 +560,6 @@ Jest.describe("ElementUtils", (function () {
                                 id: "rect1",
                                 toolId: "rect",
                                 zIndex: 1,
-                                label: undefined,
                                 x: 12,
                                 y: 14,
                                 width: 21,
@@ -598,7 +572,6 @@ Jest.describe("ElementUtils", (function () {
                                       id: "rect1",
                                       toolId: "rect",
                                       zIndex: 1,
-                                      label: undefined,
                                       x: 10,
                                       y: 15,
                                       width: 20,

@@ -2,7 +2,7 @@ open Canvas__Models
 module ElementUtils = Canvas__ElementUtils
 module StateUtils = Canvas__StateUtils
 
-let tool: Tool.t = {
+let tool: Tool.t<unit> = {
   toolId: "line",
   engine: Line({
     canResizeStart: true,
@@ -29,7 +29,7 @@ let tool: Tool.t = {
     | None => ()
     | Some(Drawing) => ()
     | Some(Idle) =>
-      let element: element = Line({
+      let element: element<'meta> = Line({
         id: RescriptUuid.make(),
         toolId: selectedToolId,
         zIndex: nextIndex,
@@ -55,7 +55,7 @@ let tool: Tool.t = {
     | Some(Drawing) =>
       switch element {
       | Some(Line(line)) =>
-        let element: element = Line({
+        let element: element<'meta> = Line({
           ...line,
           end: {x: clientX, y: clientY},
         })

@@ -3,17 +3,17 @@ open Canvas__Constants
 module SelectionUtils = Canvas__SelectionUtils
 
 // Getters for shared properties
-let getElementId = (element: element) =>
+let getElementId = (element: element<'meta>) =>
   switch element {
   | Line({id}) | Rect({id}) => id
   }
 
-let getElementZIndex = (element: element) =>
+let getElementZIndex = (element: element<'meta>) =>
   switch element {
   | Line({zIndex}) | Rect({zIndex}) => zIndex
   }
 
-let getToolId = (element: element) =>
+let getToolId = (element: element<'meta>) =>
   switch element {
   | Line({toolId}) | Rect({toolId}) => toolId
   }
@@ -27,7 +27,7 @@ let updateElementAtPosition = (~elements, ~position, ~element) => {
 let isSelected = (elementId: string, selectedElementIds: array<string>) =>
   selectedElementIds->Array.some(selectedElementId => selectedElementId === elementId)
 
-let intersectsSelection = (element: element, selection) => {
+let intersectsSelection = (element: element<'meta>, selection) => {
   switch element {
   | Line(line) => SelectionUtils.lineIntersectsSelection(line, selection, tolerance)
   | Rect(rect) => SelectionUtils.rectIntersectsSelection(rect, selection)
@@ -104,7 +104,7 @@ let isElementSelected = (element, ~selectedElementIds) =>
 
 let getFirstElementId = elements => elements->Array.getUnsafe(0)->getElementId
 
-let resizeLineInElements = (elements: array<element>, resizedLine: Line.t) => {
+let resizeLineInElements = (elements: array<element<'meta>>, resizedLine: Line.t<'meta>) => {
   elements->Array.map(element =>
     if resizedLine.id === element->getElementId {
       Line(resizedLine)
@@ -114,7 +114,7 @@ let resizeLineInElements = (elements: array<element>, resizedLine: Line.t) => {
   )
 }
 
-let resizeRectInElements = (elements: array<element>, resizedRect: Rect.t) => {
+let resizeRectInElements = (elements: array<element<'meta>>, resizedRect: Rect.t<'meta>) => {
   elements->Array.map(element =>
     if resizedRect.id === element->getElementId {
       Rect(resizedRect)
@@ -127,12 +127,12 @@ let resizeRectInElements = (elements: array<element>, resizedRect: Rect.t) => {
 @module("./utils")
 external measureTextSize: (~text: string, ~font: string) => Size.t = "measureTextSize"
 
-let getLineCenter = ({start, end}: Line.t): Vec.t => {
+let getLineCenter = ({start, end}: Line.t<'meta>): Vec.t => {
   x: (start.x +. end.x) /. 2.,
   y: (start.y +. end.y) /. 2.,
 }
 
-let getLineCenterForText = (line: Line.t, ~text, ~font): Vec.t => {
+let getLineCenterForText = (line: Line.t<'meta>, ~text, ~font): Vec.t => {
   let {x, y} = getLineCenter(line)
   let {width, height} = measureTextSize(~text, ~font)
 
@@ -142,12 +142,12 @@ let getLineCenterForText = (line: Line.t, ~text, ~font): Vec.t => {
   }
 }
 
-let getRectCenter = ({x, y, width, height}: Rect.t): Vec.t => {
+let getRectCenter = ({x, y, width, height}: Rect.t<'meta>): Vec.t => {
   x: x +. width /. 2.,
   y: y +. height /. 2.,
 }
 
-let getRectCenterForText = (rect: Rect.t, ~text, ~font): Vec.t => {
+let getRectCenterForText = (rect: Rect.t<'meta>, ~text, ~font): Vec.t => {
   let {x, y} = getRectCenter(rect)
   let {width, height} = measureTextSize(~text, ~font)
 
@@ -157,7 +157,7 @@ let getRectCenterForText = (rect: Rect.t, ~text, ~font): Vec.t => {
   }
 }
 
-let updateElementLabel = (elements: array<element>, ~id: string, ~label: option<string>) => {
+let updateElementLabel = (elements: array<element<'meta>>, ~id: string, ~label: option<string>) => {
   elements->Array.map(element =>
     if element->getElementId === id {
       switch element {
@@ -173,10 +173,10 @@ let updateElementLabel = (elements: array<element>, ~id: string, ~label: option<
 let invokeOnDoubleClick = (
   ~clientX,
   ~clientY,
-  ~tools: array<Tool.t>,
+  ~tools: array<Tool.t<'meta>>,
   ~target,
   ~updateStore,
-  ~store: Store.t,
+  ~store: Store.t<'meta>,
 ) => {
   let clickedElement = getElementAtPointWithTolerance(store.elements, clientX, clientY)
   clickedElement->Option.forEach(clickedElement => {
@@ -206,7 +206,7 @@ let roundNumberBySnapGridSize = (number: float, ~gridSize: float) => {
   }
 }
 
-let snapElementToGrid = (element: element, ~gridSize: float) => {
+let snapElementToGrid = (element: element<'meta>, ~gridSize: float) => {
   switch element {
   | Line(line) =>
     Line({

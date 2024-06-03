@@ -6,4 +6,5 @@ export interface Dict_t<T> {
 
 export type Exn_t = Error;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Types_obj_val = Record<string | number, any>;

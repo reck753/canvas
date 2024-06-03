@@ -2,7 +2,7 @@ open Canvas__Models
 module ElementUtils = Canvas__ElementUtils
 module StateUtils = Canvas__StateUtils
 
-let tool: Tool.t = {
+let tool: Tool.t<unit> = {
   toolId: "rect",
   engine: Rect({
     canResizeVertically: true,
@@ -29,7 +29,7 @@ let tool: Tool.t = {
     | None => ()
     | Some(Drawing) => ()
     | Some(Idle) =>
-      let element: element = Rect({
+      let element: element<'meta> = Rect({
         id: RescriptUuid.make(),
         zIndex: nextIndex,
         toolId: selectedToolId,
@@ -57,7 +57,7 @@ let tool: Tool.t = {
     | Some(Drawing) =>
       switch element {
       | Some(Rect(rect)) =>
-        let element: element = Rect({
+        let element: element<'meta> = Rect({
           ...rect,
           width: clientX -. rect.x,
           height: clientY -. rect.y,

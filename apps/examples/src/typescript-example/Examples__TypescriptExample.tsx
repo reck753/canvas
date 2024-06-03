@@ -1,6 +1,11 @@
 import { useLayoutEffect, useState } from "react";
 import { cn } from "@reck753/tailwind-utils/src";
-import { Store, Tool, State, Element } from "@reck753/canvas/src/models";
+import {
+  Store as CanvasStore,
+  Tool as CanvasTool,
+  State,
+  Element as CanvasElement,
+} from "@reck753/canvas/src/models";
 import {
   getElementId,
   getLineCenterForText,
@@ -22,6 +27,17 @@ import {
 import { defaultTools } from "@reck753/canvas/src/tools/tools";
 import { getRectState } from "@reck753/canvas/src/state-utils";
 import { v4 } from "uuid";
+
+type Metadata =
+  | {
+      a: string;
+      b: number;
+    }
+  | undefined;
+
+type Store = CanvasStore<Metadata>;
+type Tool = CanvasTool<Metadata>;
+type Element = CanvasElement<Metadata>;
 
 const getActiveStateDisplay = (state: State) => {
   if (state.type === "Selection") {
@@ -89,67 +105,68 @@ const SelectedElementEditor = ({
   );
 };
 
-const tools: Tool[] = [
-  ...defaultTools,
-  {
-    toolId: "square4",
-    engine: {
-      type: "Rect",
-      _0: { canResizeVertically: false, canResizeHorizontally: false },
-    },
-    onMove: () => {},
-    onEnd: () => {},
-    onStart: ({
-      clientX,
-      clientY,
-      store: { selectedToolId, state, snapToGrid },
-      nextIndex,
-      target,
-      updateStore,
-    }) => {
-      const rectState = getRectState(state);
-      const size = 40;
-
-      const { x, y } =
-        snapToGrid === "No"
-          ? { x: clientX, y: clientY }
-          : {
-              x: roundNumberBySnapGridSize(clientX, snapToGrid._0),
-              y: roundNumberBySnapGridSize(clientY, snapToGrid._0),
-            };
-
-      if (rectState === "Idle") {
-        const element: Element = {
-          type: "Rect",
-          _0: {
-            id: v4(),
-            zIndex: nextIndex,
-            toolId: selectedToolId,
-            x: x - size / 2,
-            y: y - size / 2,
-            width: size,
-            height: size,
-            label: undefined,
-          },
-        };
-        target.style.cursor = "default";
-        updateStore(prev => ({
-          ...prev,
-          selectedToolId: "selection",
-          state: { type: "Selection", _0: "Idle" },
-          elements: prev.elements.concat([element]),
-        }));
-      }
-    },
-    onDoubleClick: ({ clickedElement }) => {
-      console.log(
-        "onDoubleClick",
-        clickedElement._0.toolId,
-        clickedElement._0.id
-      );
-    },
+const customRect: Tool = {
+  toolId: "square4",
+  engine: {
+    type: "Rect",
+    _0: { canResizeVertically: false, canResizeHorizontally: false },
   },
-];
+  onMove: () => {},
+  onEnd: () => {},
+  onStart: ({
+    clientX,
+    clientY,
+    store: { selectedToolId, state, snapToGrid },
+    nextIndex,
+    target,
+    updateStore,
+  }) => {
+    const rectState = getRectState(state);
+    const size = 40;
+
+    const { x, y } =
+      snapToGrid === "No"
+        ? { x: clientX, y: clientY }
+        : {
+            x: roundNumberBySnapGridSize(clientX, snapToGrid._0),
+            y: roundNumberBySnapGridSize(clientY, snapToGrid._0),
+          };
+
+    if (rectState === "Idle") {
+      const element: Element = {
+        type: "Rect",
+        _0: {
+          id: v4(),
+          zIndex: nextIndex,
+          toolId: selectedToolId,
+          x: x - size / 2,
+          y: y - size / 2,
+          width: size,
+          height: size,
+          label: undefined,
+        },
+      };
+      target.style.cursor = "default";
+      updateStore(prev => ({
+        ...prev,
+        selectedToolId: "selection",
+        state: { type: "Selection", _0: "Idle" },
+        elements: prev.elements.concat([element]),
+      }));
+    }
+  },
+  onDoubleClick: ({ clickedElement }) => {
+    console.log(
+      "onDoubleClick",
+      clickedElement._0.toolId,
+      clickedElement._0.id
+    );
+  },
+};
+
+const defaults: Tool[] = defaultTools.map(tool => tool as Tool);
+
+const tools: Tool[] = [...defaults, customRect];
 
 const offsetX = 100;
 const offsetY = 100;
