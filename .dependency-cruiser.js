@@ -134,7 +134,7 @@ module.exports = {
         "maintenance problems later on.",
       severity: "warn",
       from: {
-        pathNot: ["\\.(gen)\\.(tsx)$"],
+        pathNot: ["\\.(gen)\\.(tsx)$", "packages/canvas"],
       },
       to: {
         pathNot: ["node_modules/next", "rescript-shims"],
@@ -200,7 +200,7 @@ module.exports = {
         "add an exception to your dependency-cruiser configuration.",
       severity: "warn",
       from: {
-        pathNot: [],
+        pathNot: ["packages/canvas"],
       },
       to: {
         dependencyTypes: ["npm-peer"],
