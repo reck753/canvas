@@ -3,9 +3,9 @@ module Document = RescriptGlobal.Document
 module ElementUtils = Canvas.ElementUtils
 module StateUtils = Canvas.StateUtils
 module ToolUtils = Canvas.ToolUtils
-module CanvasStyle = Canvas.Style
 module Tools = Canvas.Tools
 module Events = Canvas.Events
+module CanvasStyle = Examples__Style
 
 // Accept through props instead
 let tools: array<Tool.t<'meta>> = [

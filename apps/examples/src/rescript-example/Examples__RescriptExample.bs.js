@@ -5,8 +5,8 @@ import * as React from "react";
 import * as Caml_obj from "rescript/lib/es6/caml_obj.js";
 import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as Core__Option from "@rescript/core/src/Core__Option.bs.js";
-import * as Canvas__Style from "../../../../packages/canvas/src/Canvas__Style.bs.js";
 import * as TailwindUtils from "../../../../packages/tailwind-utils/src/TailwindUtils.bs.js";
+import * as Examples__Style from "../style/Examples__Style.bs.js";
 import * as Canvas__ToolUtils from "../../../../packages/canvas/src/Canvas__ToolUtils.bs.js";
 import * as JsxRuntime from "react/jsx-runtime";
 import * as Canvas__StateUtils from "../../../../packages/canvas/src/Canvas__StateUtils.bs.js";
@@ -132,7 +132,7 @@ function Examples__RescriptExample(props) {
           if (ctx !== undefined) {
             var canvas$2 = Core__Option.getExn(canvas$1);
             ctx.clearRect(0, 0, canvas$2.width, canvas$2.height);
-            ctx.strokeStyle = Canvas__Style.elementStroke;
+            ctx.strokeStyle = Examples__Style.elementStroke;
             store.elements.forEach(function (element) {
                   var elementTool = tools.find(function (tool) {
                         return tool.toolId === Canvas__ElementUtils.getToolId(element);
@@ -141,9 +141,9 @@ function Examples__RescriptExample(props) {
                   var style = Canvas__ToolUtils.getOptStyleWithDefaults(elementTool);
                   ctx.lineWidth = Canvas__ToolUtils.getLineWidth(style);
                   if (isSelected) {
-                    ctx.strokeStyle = Canvas__Style.selectedElementStroke;
+                    ctx.strokeStyle = Examples__Style.selectedElementStroke;
                   } else {
-                    ctx.strokeStyle = Canvas__Style.elementStroke;
+                    ctx.strokeStyle = Examples__Style.elementStroke;
                   }
                   if (element.type === "Line") {
                     var line = element._0;
@@ -153,14 +153,14 @@ function Examples__RescriptExample(props) {
                     ctx.moveTo(start.x, start.y);
                     ctx.lineTo(end.x, end.y);
                     ctx.stroke();
-                    ctx.font = Canvas__Style.font;
+                    ctx.font = Examples__Style.font;
                     if (isSelected) {
-                      ctx.fillStyle = Canvas__Style.selectedElementStroke;
+                      ctx.fillStyle = Examples__Style.selectedElementStroke;
                     } else {
                       ctx.fillStyle = "black";
                     }
                     var text = Core__Option.getOr(line.label, line.zIndex.toString());
-                    var lineCenter = Canvas__ElementUtils.getLineCenterForText(line, text, Canvas__Style.font);
+                    var lineCenter = Canvas__ElementUtils.getLineCenterForText(line, text, Examples__Style.font);
                     return ctx.fillText(text, lineCenter.x, lineCenter.y);
                   }
                   var rect = element._0;
@@ -169,20 +169,20 @@ function Examples__RescriptExample(props) {
                   var y = rect.y;
                   var x = rect.x;
                   if (isSelected) {
-                    ctx.fillStyle = Canvas__Style.selectedRectFill;
+                    ctx.fillStyle = Examples__Style.selectedRectFill;
                   } else {
-                    ctx.fillStyle = Canvas__Style.rectFill;
+                    ctx.fillStyle = Examples__Style.rectFill;
                   }
                   ctx.strokeRect(x, y, width, height);
                   ctx.fillRect(x, y, width, height);
-                  ctx.font = Canvas__Style.font;
+                  ctx.font = Examples__Style.font;
                   if (isSelected) {
-                    ctx.fillStyle = Canvas__Style.selectedElementStroke;
+                    ctx.fillStyle = Examples__Style.selectedElementStroke;
                   } else {
                     ctx.fillStyle = "black";
                   }
                   var text$1 = Core__Option.getOr(rect.label, rect.zIndex.toString());
-                  var rectCenter = Canvas__ElementUtils.getRectCenterForText(rect, text$1, Canvas__Style.font);
+                  var rectCenter = Canvas__ElementUtils.getRectCenterForText(rect, text$1, Examples__Style.font);
                   ctx.fillText(text$1, rectCenter.x, rectCenter.y);
                 });
             var match = store.state;
@@ -195,9 +195,9 @@ function Examples__RescriptExample(props) {
                     var width = match$2.width;
                     var y = match$2.y;
                     var x = match$2.x;
-                    ctx.strokeStyle = Canvas__Style.selectionBoxStroke;
-                    ctx.fillStyle = Canvas__Style.selectionBoxFill;
-                    ctx.lineWidth = Canvas__Style.selectionBoxLineWidth;
+                    ctx.strokeStyle = Examples__Style.selectionBoxStroke;
+                    ctx.fillStyle = Examples__Style.selectionBoxFill;
+                    ctx.lineWidth = Examples__Style.selectionBoxLineWidth;
                     ctx.strokeRect(x, y, width, height);
                     ctx.fillRect(x, y, width, height);
                   }

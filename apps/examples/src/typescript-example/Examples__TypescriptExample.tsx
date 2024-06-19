@@ -19,7 +19,6 @@ import {
   onMouseMoveHandler,
   onMouseUpHandler,
 } from "@reck753/canvas/src/events/events";
-import CanvasStyle from "@reck753/canvas/src/style";
 import {
   getOptStyleWithDefaults,
   getLineWidth,
@@ -27,6 +26,7 @@ import {
 import { defaultTools } from "@reck753/canvas/src/tools/tools";
 import { getRectState } from "@reck753/canvas/src/state-utils";
 import { v4 } from "uuid";
+import CanvasStyle from "../style";
 
 type Metadata =
   | {

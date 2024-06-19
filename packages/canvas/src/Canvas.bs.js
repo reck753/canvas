@@ -25,8 +25,6 @@ var SelectionUtils;
 
 var StateUtils;
 
-var Style;
-
 var ToolUtils;
 
 export {
@@ -38,7 +36,6 @@ export {
   ElementUtils ,
   SelectionUtils ,
   StateUtils ,
-  Style ,
   ToolUtils ,
 }
 /* No side effect */

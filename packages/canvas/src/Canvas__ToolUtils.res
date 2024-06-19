@@ -1,7 +1,8 @@
 open Canvas__Models
-module CanvasStyle = Canvas__Style
 
-let defaultStyle: Tool.style = {lineWidth: CanvasStyle.elementLineWidth}
+let elementLineWidth = 1.
+
+let defaultStyle: Tool.style = {lineWidth: elementLineWidth}
 
 let getStyle: Tool.t<'meta> => option<Tool.style> = tool =>
   switch tool.engine {
@@ -16,5 +17,4 @@ let getOptStyleWithDefaults: option<Tool.t<'meta>> => Tool.style = tool =>
   | None => defaultStyle
   }
 
-let getLineWidth: Tool.style => float = style =>
-  style.lineWidth->Option.getOr(CanvasStyle.elementLineWidth)
+let getLineWidth: Tool.style => float = style => style.lineWidth->Option.getOr(elementLineWidth)

@@ -16,5 +16,4 @@ module CanvasUtils = Canvas__CanvasUtils
 module ElementUtils = Canvas__ElementUtils
 module SelectionUtils = Canvas__SelectionUtils
 module StateUtils = Canvas__StateUtils
-module Style = Canvas__Style
 module ToolUtils = Canvas__ToolUtils
